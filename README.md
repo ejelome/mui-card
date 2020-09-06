@@ -9,5 +9,12 @@ Learn [Material-UI](https://material-ui.com) with a business card
 **Table of Contents**
 
 - [mui-card](#mui-card)
+  - [License](#license)
 
 <!-- markdown-toc end -->
+
+---
+
+## License
+
+`mui-card` is licensed under [MIT](./LICENSE).
