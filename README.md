@@ -9,12 +9,31 @@ Learn [Material-UI](https://material-ui.com) with a business card
 **Table of Contents**
 
 - [mui-card](#mui-card)
+  - [Usage](#usage)
+    - [Install](#install)
+    - [Serve](#serve)
   - [Prototypes](#prototypes)
     - [lt_sm](#lt_sm)
     - [gte_sm](#gte_sm)
   - [License](#license)
 
 <!-- markdown-toc end -->
+
+---
+
+## Usage
+
+### Install
+
+```shell
+$ npm [install|isntall|add|i]
+```
+
+### Serve
+
+```shell
+$ npm start
+```
 
 ---
 
