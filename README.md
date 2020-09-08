@@ -175,6 +175,8 @@ const App = () => {
 > - `theme` property object contains the design properties of the application
 > - `"&"` implies child elements under the element where `root` was assigned
 
+---
+
 ## License
 
 `mui-card` is licensed under [MIT](./LICENSE).
