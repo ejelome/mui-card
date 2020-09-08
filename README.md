@@ -83,13 +83,14 @@ import "fontsource-roboto/400.css";
 import "fontsource-roboto/500.css";
 import "fontsource-roboto/700.css";
 
-import { Button, CssBaseline } from "@material-ui/core";
+import { Button, CssBaseline, Typography } from "@material-ui/core";
 
 const App = () => {
   return (
     <Fragment>
       <CssBaseline />
-      <Button variant="contained">hello, world</Button>
+      <Typography variant="h1">hello, world</Typography>
+      <Button variant="contained">click me</Button>
     </Fragment>
   );
 };
@@ -113,9 +114,10 @@ const App = () => {
 ```
 
 > **Notes:**
->
+
 > - [`<meta name="viewport">`](https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag#Enter_viewport_meta_tag) ensures proper rendering and touch zooming for all devices
-> - [`CssBaseline`](https://next.material-ui.com/components/css-baseline) fixes inconsistencies across browsers and devices with an opinionated resets
+> - [Roboto](https://fonts.google.com/specimen/Roboto) font is not automatically loaded by Material-UI; styles must be specified manually
+> - [`CssBaseline`](https://next.material-ui.com/components/css-baseline) fixes inconsistencies across browsers and devices with opinionated resets
 
 ---
 

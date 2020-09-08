@@ -7,13 +7,14 @@ import "fontsource-roboto/400.css";
 import "fontsource-roboto/500.css";
 import "fontsource-roboto/700.css";
 
-import { Button, CssBaseline } from "@material-ui/core";
+import { Button, CssBaseline, Typography } from "@material-ui/core";
 
 const App = () => {
   return (
     <Fragment>
       <CssBaseline />
-      <Button variant="contained">hello, world</Button>
+      <Typography variant="h1">hello, world</Typography>
+      <Button variant="contained">click me</Button>
     </Fragment>
   );
 };
