@@ -6,7 +6,7 @@ import "fontsource-roboto/400.css";
 import "fontsource-roboto/500.css";
 import "fontsource-roboto/700.css";
 
-import { Button, CssBaseline, Typography } from "@material-ui/core";
+import { Box, Button, CssBaseline, Typography } from "@material-ui/core";
 import {
   createMuiTheme,
   makeStyles,
@@ -29,8 +29,11 @@ const theme = responsiveFontSizes(
 const useStyles = makeStyles(({ palette: { secondary, common } }) => ({
   root: {
     backgroundColor: secondary.paper,
-    "& button": {
-      color: common.black,
+    "& span": {
+      display: "inline-block",
+      "& button": {
+        color: common.black,
+      },
     },
   },
 }));
@@ -46,9 +49,11 @@ const App = () => {
       <div className={root}>
         <CssBaseline />
         <Typography variant="h1">hello, {type} world</Typography>
-        <Button variant="contained" color="secondary">
-          click me
-        </Button>
+        <Box component="span" m={2} p={2}>
+          <Button variant="contained" color="secondary">
+            click me
+          </Button>
+        </Box>
       </div>
     </ThemeProvider>
   );
