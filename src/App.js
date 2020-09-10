@@ -1,5 +1,4 @@
 import React from "react";
-// import logo from "./logo.svg";
 import "./App.css";
 
 import "fontsource-roboto/300.css";
@@ -13,6 +12,7 @@ import {
   makeStyles,
   ThemeProvider,
   responsiveFontSizes,
+  useTheme,
 } from "@material-ui/core/styles";
 import { orange } from "@material-ui/core/colors";
 
@@ -26,23 +26,26 @@ const theme = responsiveFontSizes(
   })
 );
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(({ palette: { secondary, common } }) => ({
   root: {
-    backgroundColor: theme.palette.secondary.paper,
+    backgroundColor: secondary.paper,
     "& button": {
-      color: theme.palette.common.black,
+      color: common.black,
     },
   },
 }));
 
 const App = () => {
-  const classes = useStyles();
+  const { root } = useStyles();
+  const {
+    palette: { type },
+  } = useTheme();
 
   return (
     <ThemeProvider theme={theme}>
-      <div className={classes.root}>
+      <div className={root}>
         <CssBaseline />
-        <Typography variant="h1">hello, world</Typography>
+        <Typography variant="h1">hello, {type} world</Typography>
         <Button variant="contained" color="secondary">
           click me
         </Button>
