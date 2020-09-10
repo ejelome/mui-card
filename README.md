@@ -118,6 +118,7 @@ const App = () => {
 
 > - [`<meta name="viewport">`](https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag#Enter_viewport_meta_tag) ensures proper rendering and touch zooming for all devices
 > - [Roboto](https://fonts.google.com/specimen/Roboto) font is not automatically loaded by Material-UI; styles must be specified manually
+> - Only `300`, `400`, `500` and `700` of typography font weights are being used by Material-UI
 > - [`CssBaseline`](https://material-ui.com/components/css-baseline) fixes inconsistencies across browsers and devices with opinionated resets
 
 ### 2. Theme
@@ -131,6 +132,7 @@ import {
   makeStyles,
   ThemeProvider,
   responsiveFontSizes,
+  useTheme,
 } from "@material-ui/core/styles";
 import { orange } from "@material-ui/core/colors";
 
@@ -144,21 +146,26 @@ const theme = responsiveFontSizes(
   })
 );
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(({ palette: { secondary, common } }) => ({
   root: {
-    backgroundColor: theme.palette.secondary.paper,
+    backgroundColor: secondary.paper,
     "& button": {
-      color: theme.palette.common.black,
+      color: common.black,
     },
   },
 }));
 
 const App = () => {
-  const classes = useStyles();
+  const { root } = useStyles();
+  const {
+    palette: { type },
+  } = useTheme();
 
   return (
     <ThemeProvider theme={theme}>
-      <div className={classes.root}>
+      <div className={root}>
+        // …
+        <Typography variant="h1">hello, {type} world</Typography>
         // …
       </div>
     </ThemeProvider>
@@ -168,10 +175,12 @@ const App = () => {
 > **Notes:**
 >
 > - [`createMuiTheme`](https://material-ui.com/customization/theming/#createmuitheme-options-args-theme) returns [default theme](https://material-ui.com/customization/default-theme) object that can be overridden
+> - [`useTheme`](https://material-ui.com/styles/api/#usetheme-theme) hook returns `theme` object and to access theme properties
 > - [`ThemeProvider`](https://material-ui.com/styles/api/#themeprovider) takes `theme` property and makes it available to children
 > - [`responsiveFontSizes`](https://material-ui.com/customization/theming/#responsivefontsizes-theme-options-theme) generates responsive typography for the theme
 > - `orange` is one of the [color palette](https://material-ui.com/customization/color/#color-palette)s (`orange[50]` means `hue[shade]`)
 > - [`makeStyles`](https://material-ui.com/styles/api/#makestyles-styles-options-hook) links a style sheet with a function component (returns a hook)
+> - `makeStyles(props)` can mix values of component `props` with `theme` object
 > - `theme` property object contains the design properties of the application
 > - `"&"` implies child elements under the element where `root` was assigned
 
