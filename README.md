@@ -20,6 +20,8 @@ Learn [Material-UI](https://material-ui.com) with a business card
       - [1.1. Install](#11-install)
       - [1.2. Configure](#12-configure)
     - [2. Theme](#2-theme)
+    - [3. Layout](#3-layout)
+      - [3.1. Box](#31-box)
   - [License](#license)
 
 <!-- markdown-toc end -->
@@ -183,6 +185,35 @@ const App = () => {
 > - `makeStyles(props)` can mix values of component `props` with `theme` object
 > - `theme` property object contains the design properties of the application
 > - `"&"` implies child elements under the element where `root` was assigned
+
+### 3. Layout
+
+#### 3.1. Box
+
+```javascript
+// …
+import { Box, … } from "@material-ui/core";
+// …
+const useStyles = makeStyles(({ …
+  root: {
+    // …
+    "& span": {
+      display: "inline-block",
+      "& button": {
+        // …
+      },
+    },
+  // …
+
+const App = () => {
+  // …
+  return (
+    // …
+        <Box component="span" m={2} p={2}>
+          <Button …
+        </Box>
+      // …
+```
 
 ---
 
