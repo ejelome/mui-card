@@ -7,7 +7,7 @@ import "fontsource-roboto/400.css";
 import "fontsource-roboto/500.css";
 import "fontsource-roboto/700.css";
 
-import { Box, CssBaseline, Typography } from "@material-ui/core";
+import { Box, Container, CssBaseline, Typography } from "@material-ui/core";
 import {
   createMuiTheme,
   makeStyles,
@@ -35,7 +35,7 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className={root}>
+      <Container className={root} disableGutters={true}>
         <CssBaseline />
         <Typography variant="h1">
           hello,
@@ -44,7 +44,7 @@ const App = () => {
           </Box>
           world
         </Typography>
-      </div>
+      </Container>
     </ThemeProvider>
   );
 };

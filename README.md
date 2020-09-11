@@ -30,6 +30,7 @@ Learn [Material-UI](https://material-ui.com) with a business card
       - [2.5. responsiveFontSizes](#25-responsivefontsizes)
     - [3. Layout](#3-layout)
       - [3.1. Box](#31-box)
+      - [3.2. Container](#32-container)
   - [License](#license)
 
 <!-- markdown-toc end -->
@@ -285,6 +286,29 @@ const App …
 >
 > - [`Box`](https://material-ui.com/components/box) component can access the full list of [style functions](https://next.material-ui.com/system/basics/#all-inclusive)
 > - Use the `component` property to replace the element wrapper
+
+#### 3.2. Container
+
+```javascript
+// file: src/App.js
+// …
+import { …, Container, … } from "@material-ui/core";
+// …
+const App = () => {
+  // …
+  return (
+    <ThemeProvider …>
+      <Container className={root} disableGutters={true}>
+        // …
+      </Container>
+    // …
+```
+
+> **Notes:**
+>
+> - [`Container`](https://material-ui.com/components/container) centers its children horizontally
+> - By default, `maxWidth` uses `lg` as grid breakpoint
+> - `disableGutters` removes left and right `padding`
 
 ---
 
