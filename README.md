@@ -264,27 +264,26 @@ theme = responsiveFontSizes(theme);
 ```javascript
 // …
 import { Box, … } from "@material-ui/core";
-// …
-const useStyles = makeStyles(({ …
-  root: {
-    // …
-    "& span": {
-      display: "inline-block",
-      "& button": {
-        // …
-      },
-    },
-  // …
 
-const App = () => {
+const App …
   // …
   return (
     // …
-        <Box component="span" m={2} p={2}>
-          <Button …
-        </Box>
+    <ThemeProvider …>
       // …
+        <Typography …>
+          hello,
+          <Box component="span" bgcolor="text.secondary" color="text.primary">
+            {type}
+          </Box>
+          world
+        …
 ```
+
+> **Notes:**
+>
+> - The `Box` component can access the full list of [style functions](https://next.material-ui.com/system/basics/#all-inclusive)
+> - Use the `component` property to replace the element wrapper
 
 ---
 
