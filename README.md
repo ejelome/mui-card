@@ -19,7 +19,15 @@ Learn [Material-UI](https://material-ui.com) with a business card
     - [1. Setup](#1-setup)
       - [1.1. Install](#11-install)
       - [1.2. Configure](#12-configure)
-    - [2. Theme](#2-theme)
+        - [1.2.1. CssBaseline](#121-cssbaseline)
+        - [1.2.2. Roboto font](#122-roboto-font)
+        - [1.2.3. Viewport](#123-viewport)
+    - [2. Theming](#2-theming)
+      - [2.1. makeStyles](#21-makestyles)
+      - [2.2. useTheme](#22-usetheme)
+      - [2.3. hue[shade]](#23-hueshade)
+      - [2.4. Custom theme](#24-custom-theme)
+      - [2.5. responsiveFontSizes](#25-responsivefontsizes)
     - [3. Layout](#3-layout)
       - [3.1. Box](#31-box)
   - [License](#license)
@@ -75,8 +83,29 @@ $ npm i @material-ui/{core,icons} \
 >
 > - [`icons`](https://material-ui.com/components/material-icons) package are converted [`SvgIcon`](https://material-ui.com/api/svg-icon) components
 > - `SvgIcon`s uses [PascalCase](https://wiki.c2.com/?PascalCase) as naming convention
+> - [Roboto](https://fonts.google.com/specimen/Roboto) fonts must be specified manually
 
 #### 1.2. Configure
+
+##### 1.2.1. CssBaseline
+
+```javascript
+// file: src/App.js
+// …
+
+import { CssBaseline } from "@material-ui/core";
+
+const App = () => {
+  return (
+    <div …>
+      <CssBaseline />
+    // …
+```
+
+> **Note:** <br />
+> The [`CssBaseline`](https://material-ui.com/components/css-baseline) fixes inconsistencies across browsers and devices with an opinionated resets.
+
+##### 1.2.2. Roboto font
 
 ```javascript
 // file: src/App.js
@@ -86,19 +115,20 @@ import "fontsource-roboto/400.css";
 import "fontsource-roboto/500.css";
 import "fontsource-roboto/700.css";
 
-import { Button, CssBaseline, Typography } from "@material-ui/core";
+import { …, Typography } from "@material-ui/core";
 
 const App = () => {
   return (
-    <Fragment>
-      <CssBaseline />
+    <div …>
+      // …
       <Typography variant="h1">hello, world</Typography>
-      <Button variant="contained">click me</Button>
-    </Fragment>
-  );
-};
-// …
+    // …
 ```
+
+> **Note:** <br />
+> Only `300`, `400`, `500` and `700` of typography font weights are being used by Material-UI.
+
+##### 1.2.3. Viewport
 
 ```html
 <!-- file: public/index.html -->
@@ -116,60 +146,93 @@ const App = () => {
 </html>
 ```
 
-> **Notes:**
+> **Note:** <br />
+> The [`meta-viewport`](https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag#Enter_viewport_meta_tag) ensures proper rendering and touch zooming for all browsers and devices.
 
-> - [`<meta name="viewport">`](https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag#Enter_viewport_meta_tag) ensures proper rendering and touch zooming for all devices
-> - [Roboto](https://fonts.google.com/specimen/Roboto) font is not automatically loaded by Material-UI; styles must be specified manually
-> - Only `300`, `400`, `500` and `700` of typography font weights are being used by Material-UI
-> - [`CssBaseline`](https://material-ui.com/components/css-baseline) fixes inconsistencies across browsers and devices with opinionated resets
+### 2. Theming
 
-### 2. Theme
+#### 2.1. makeStyles
 
 ```javascript
 // file: src/App.js
-import React from "react";
 // …
-import {
-  createMuiTheme,
-  makeStyles,
-  ThemeProvider,
-  responsiveFontSizes,
-  useTheme,
-} from "@material-ui/core/styles";
-import { orange } from "@material-ui/core/colors";
+import { makeStyles } from "@material-ui/core/styles";
 
-const theme = responsiveFontSizes(
-  createMuiTheme({
-    palette: {
-      secondary: {
-        main: orange[50],
-      },
-    },
-  })
-);
-
-const useStyles = makeStyles(({ palette: { secondary, common } }) => ({
+const useStyles = makeStyles(({ palette: { common: { black, white } } }) => ({
   root: {
-    backgroundColor: secondary.paper,
-    "& button": {
-      color: common.black,
-    },
+    backgroundColor: black,
+    "& h1": { color: white },
   },
 }));
 
 const App = () => {
   const { root } = useStyles();
+  return (
+    <div className={root}>
+      // …
+```
+
+> **Notes:**
+>
+> - [`makeStyles`](https://material-ui.com/styles/api/#makestyles-styles-options-hook) links a style sheet with a function component (returns a hook)
+> - `makeStyles(props)` can mix values of component `props` with `theme` object
+> - `theme` property object contains the design properties of the application
+> - `"&"` implies child elements under the element where `root` was assigned
+
+#### 2.2. useTheme
+
+```javascript
+// file: src/App.js
+// …
+import { …, useTheme } from "@material-ui/core/styles";
+
+// …
+const App = () => {
+  // …
   const {
     palette: { type },
   } = useTheme();
 
   return (
+    <div …>
+      // …
+      <Typography …>hello, {type} world…
+```
+
+> **Note:** <br />
+> The [`useTheme`](https://material-ui.com/styles/api/#usetheme-theme) hook returns `theme` object and to access theme properties.
+
+#### 2.3. hue[shade]
+
+```javascript
+// file: src/App.js
+// …
+import { grey } from "@material-ui/core/colors";
+
+const useStyles = makeStyles(() => ({
+  root: {
+    backgroundColor: grey[900], // near-black: #212121
+    "& h1": { color: grey[50] }, // near-white: #fafafa
+  // …
+```
+
+> **Note:** <br />
+> The `grey` object is one of the [color palette](https://material-ui.com/customization/color/#color-palette)s (`grey[50…900]` means `hue[shade]`).
+
+#### 2.4. Custom theme
+
+```javascript
+// file: src/App.js
+// …
+import { createMuiTheme, ThemeProvider, … } from "@material-ui/core/styles";
+// …
+const theme = createMuiTheme({ palette: { type: "dark" } });
+
+const App = () => {
+  // …
+  return (
     <ThemeProvider theme={theme}>
-      <div className={root}>
-        // …
-        <Typography variant="h1">hello, {type} world</Typography>
-        // …
-      </div>
+      // …
     </ThemeProvider>
   // …
 ```
@@ -177,14 +240,22 @@ const App = () => {
 > **Notes:**
 >
 > - [`createMuiTheme`](https://material-ui.com/customization/theming/#createmuitheme-options-args-theme) returns [default theme](https://material-ui.com/customization/default-theme) object that can be overridden
-> - [`useTheme`](https://material-ui.com/styles/api/#usetheme-theme) hook returns `theme` object and to access theme properties
 > - [`ThemeProvider`](https://material-ui.com/styles/api/#themeprovider) takes `theme` property and makes it available to children
-> - [`responsiveFontSizes`](https://material-ui.com/customization/theming/#responsivefontsizes-theme-options-theme) generates responsive typography for the theme
-> - `orange` is one of the [color palette](https://material-ui.com/customization/color/#color-palette)s (`orange[50]` means `hue[shade]`)
-> - [`makeStyles`](https://material-ui.com/styles/api/#makestyles-styles-options-hook) links a style sheet with a function component (returns a hook)
-> - `makeStyles(props)` can mix values of component `props` with `theme` object
-> - `theme` property object contains the design properties of the application
-> - `"&"` implies child elements under the element where `root` was assigned
+
+#### 2.5. responsiveFontSizes
+
+```javascript
+// file: src/App.js
+// …
+import { …, responsiveFontSizes, … } from "@material-ui/core/styles";
+// …
+let theme = createMuiTheme( … )
+theme = responsiveFontSizes(theme);
+// …
+```
+
+> **Note:** <br />
+> The [`responsiveFontSizes`](https://material-ui.com/customization/theming/#responsivefontsizes-theme-options-theme) generates responsive typography for the theme.
 
 ### 3. Layout
 
@@ -193,27 +264,26 @@ const App = () => {
 ```javascript
 // …
 import { Box, … } from "@material-ui/core";
-// …
-const useStyles = makeStyles(({ …
-  root: {
-    // …
-    "& span": {
-      display: "inline-block",
-      "& button": {
-        // …
-      },
-    },
-  // …
 
-const App = () => {
+const App …
   // …
   return (
     // …
-        <Box component="span" m={2} p={2}>
-          <Button …
-        </Box>
+    <ThemeProvider …>
       // …
+        <Typography …>
+          hello,
+          <Box component="span" bgcolor="text.secondary" color="text.primary">
+            {type}
+          </Box>
+          world
+        …
 ```
+
+> **Notes:**
+>
+> - The `Box` component can access the full list of [style functions](https://next.material-ui.com/system/basics/#all-inclusive)
+> - Use the `component` property to replace the element wrapper
 
 ---
 
