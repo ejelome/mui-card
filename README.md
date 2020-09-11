@@ -5,24 +5,26 @@ Learn [Material-UI](https://material-ui.com) with a business card
 ---
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-
 **Table of Contents**
 
 - [mui-card](#mui-card)
-  - [Usage](#usage)
-    - [Install](#install)
-    - [Serve](#serve)
-  - [Prototypes](#prototypes)
-    - [lt_sm](#lt_sm)
-    - [gte_sm](#gte_sm)
-  - [Lessons](#lessons)
-    - [1. Setup](#1-setup)
-      - [1.1. Install](#11-install)
-      - [1.2. Configure](#12-configure)
-    - [2. Theme](#2-theme)
-    - [3. Layout](#3-layout)
-      - [3.1. Box](#31-box)
-  - [License](#license)
+    - [Usage](#usage)
+        - [Install](#install)
+        - [Serve](#serve)
+    - [Prototypes](#prototypes)
+        - [lt_sm](#lt_sm)
+        - [gte_sm](#gte_sm)
+    - [Lessons](#lessons)
+        - [1. Setup](#1-setup)
+            - [1.1. Install](#11-install)
+            - [1.2. Configure](#12-configure)
+                - [1.2.1. CssBaseline](#121-cssbaseline)
+                - [1.2.2. Roboto font](#122-roboto-font)
+                - [1.2.3. Viewport](#123-viewport)
+        - [2. Theme](#2-theme)
+        - [3. Layout](#3-layout)
+            - [3.1. Box](#31-box)
+    - [License](#license)
 
 <!-- markdown-toc end -->
 
@@ -75,8 +77,29 @@ $ npm i @material-ui/{core,icons} \
 >
 > - [`icons`](https://material-ui.com/components/material-icons) package are converted [`SvgIcon`](https://material-ui.com/api/svg-icon) components
 > - `SvgIcon`s uses [PascalCase](https://wiki.c2.com/?PascalCase) as naming convention
+> - [Roboto](https://fonts.google.com/specimen/Roboto) fonts must be specified manually
 
 #### 1.2. Configure
+
+##### 1.2.1. CssBaseline
+
+```javascript
+// file: src/App.js
+// …
+
+import { CssBaseline } from "@material-ui/core";
+
+const App = () => {
+  return (
+    <div …>
+      <CssBaseline />
+    // …
+```
+
+> **Note:** <br />
+> The [`CssBaseline`](https://material-ui.com/components/css-baseline) fixes inconsistencies across browsers and devices with an opinionated resets.
+
+##### 1.2.2. Roboto font
 
 ```javascript
 // file: src/App.js
@@ -86,19 +109,21 @@ import "fontsource-roboto/400.css";
 import "fontsource-roboto/500.css";
 import "fontsource-roboto/700.css";
 
-import { Button, CssBaseline, Typography } from "@material-ui/core";
+import { …, Typography } from "@material-ui/core";
 
 const App = () => {
   return (
-    <Fragment>
-      <CssBaseline />
+    <div …>
+      // …
       <Typography variant="h1">hello, world</Typography>
-      <Button variant="contained">click me</Button>
-    </Fragment>
-  );
-};
-// …
+    // …
 ```
+
+> **Note:**
+>
+> Only `300`, `400`, `500` and `700` of typography font weights are being used by Material-UI.
+
+##### 1.2.3. Viewport
 
 ```html
 <!-- file: public/index.html -->
@@ -116,12 +141,8 @@ const App = () => {
 </html>
 ```
 
-> **Notes:**
-
-> - [`<meta name="viewport">`](https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag#Enter_viewport_meta_tag) ensures proper rendering and touch zooming for all devices
-> - [Roboto](https://fonts.google.com/specimen/Roboto) font is not automatically loaded by Material-UI; styles must be specified manually
-> - Only `300`, `400`, `500` and `700` of typography font weights are being used by Material-UI
-> - [`CssBaseline`](https://material-ui.com/components/css-baseline) fixes inconsistencies across browsers and devices with opinionated resets
+> **Note:** <br />
+> The [`meta-viewport`](https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag#Enter_viewport_meta_tag) ensures proper rendering and touch zooming for all browsers and devices.
 
 ### 2. Theme
 
