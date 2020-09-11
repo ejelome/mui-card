@@ -8,13 +8,38 @@ import "fontsource-roboto/500.css";
 import "fontsource-roboto/700.css";
 
 import { CssBaseline, Typography } from "@material-ui/core";
+import {
+  createMuiTheme,
+  makeStyles,
+  ThemeProvider,
+  responsiveFontSizes,
+  useTheme,
+} from "@material-ui/core/styles";
+import { grey } from "@material-ui/core/colors";
+
+const useStyles = makeStyles(() => ({
+  root: {
+    backgroundColor: grey[900],
+    "& h1": { color: grey[50] },
+  },
+}));
+
+let theme = createMuiTheme({ palette: { type: "dark" } });
+theme = responsiveFontSizes(theme);
 
 const App = () => {
+  const { root } = useStyles();
+  const {
+    palette: { type },
+  } = useTheme();
+
   return (
-    <div className="App">
-      <CssBaseline />
-      <Typography variant="h1">hello, world</Typography>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className={root}>
+        <CssBaseline />
+        <Typography variant="h1">hello, {type} world</Typography>
+      </div>
+    </ThemeProvider>
   );
 };
 
