@@ -11,8 +11,8 @@ import { Box, CssBaseline, Typography } from "@material-ui/core";
 import {
   createMuiTheme,
   makeStyles,
-  ThemeProvider,
   responsiveFontSizes,
+  ThemeProvider,
   useTheme,
 } from "@material-ui/core/styles";
 import { grey } from "@material-ui/core/colors";
