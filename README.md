@@ -224,7 +224,7 @@ const useStyles = makeStyles(() => ({
 ```javascript
 // file: src/App.js
 // …
-import { createMuiTheme, ThemeProvider, … } from "@material-ui/core/styles";
+import { createMuiTheme, …, ThemeProvider, … } from "@material-ui/core/styles";
 // …
 const theme = createMuiTheme({ palette: { type: "dark" } });
 
@@ -262,6 +262,7 @@ theme = responsiveFontSizes(theme);
 #### 3.1. Box
 
 ```javascript
+// file: src/App.js
 // …
 import { Box, … } from "@material-ui/core";
 
@@ -282,7 +283,7 @@ const App …
 
 > **Notes:**
 >
-> - The `Box` component can access the full list of [style functions](https://next.material-ui.com/system/basics/#all-inclusive)
+> - [`Box`](https://material-ui.com/components/box) component can access the full list of [style functions](https://next.material-ui.com/system/basics/#all-inclusive)
 > - Use the `component` property to replace the element wrapper
 
 ---
