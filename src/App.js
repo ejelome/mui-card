@@ -7,13 +7,19 @@ import "fontsource-roboto/400.css";
 import "fontsource-roboto/500.css";
 import "fontsource-roboto/700.css";
 
-import { Box, Container, CssBaseline, Typography } from "@material-ui/core";
+import {
+  Box,
+  Container,
+  CssBaseline,
+  Grid,
+  Typography,
+} from "@material-ui/core";
+import { Mood } from "@material-ui/icons";
 import {
   createMuiTheme,
   makeStyles,
   responsiveFontSizes,
   ThemeProvider,
-  useTheme,
 } from "@material-ui/core/styles";
 import { grey } from "@material-ui/core/colors";
 
@@ -29,21 +35,34 @@ theme = responsiveFontSizes(theme);
 
 const App = () => {
   const { root } = useStyles();
-  const {
-    palette: { type },
-  } = useTheme();
-
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       <Container className={root} disableGutters={true}>
-        <CssBaseline />
-        <Typography variant="h1">
-          hello,
-          <Box component="span" bgcolor="text.secondary" color="text.primary">
-            {type}
-          </Box>
-          world
-        </Typography>
+        <Grid container direction="column" alignItems="center" spacing={4}>
+          <Grid item>
+            <Box mt={4}>
+              <img
+                alt=""
+                src="https://via.placeholder.com/96x96"
+                width="96"
+                height="96"
+              />
+            </Box>
+          </Grid>
+          <Grid item>
+            <Typography variant="h1">title</Typography>
+          </Grid>
+          <Grid item>
+            <Typography variant="subtitle1">subtitle</Typography>
+          </Grid>
+          <Grid item>
+            <Typography variant="body1">description</Typography>
+          </Grid>
+          <Grid item container justify="space-evenly">
+            <Mood />
+          </Grid>
+        </Grid>
       </Container>
     </ThemeProvider>
   );
