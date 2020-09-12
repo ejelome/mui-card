@@ -12,9 +12,10 @@ import {
   Container,
   CssBaseline,
   Grid,
+  Hidden,
   Typography,
 } from "@material-ui/core";
-import { Mood } from "@material-ui/icons";
+import { Mood, MoreHoriz } from "@material-ui/icons";
 import {
   createMuiTheme,
   makeStyles,
@@ -61,6 +62,9 @@ const App = () => {
           </Grid>
           <Grid item container justify="space-evenly">
             <Mood />
+            <Hidden smUp>
+              <MoreHoriz />
+            </Hidden>
           </Grid>
         </Grid>
       </Container>
