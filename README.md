@@ -317,7 +317,7 @@ const App = () => {
 ```javascript
 // file: src/App.js
 // …
-import { Box, …, Grid, Typography } from "@material-ui/core";
+import { Box, …, Grid, Paper, Typography } from "@material-ui/core";
 import { Mood } from "@material-ui/icons";
 // …
 const App = () => {
@@ -325,7 +325,14 @@ const App = () => {
   return (
     // …
       <Container …>
-        <Grid container direction="column" alignItems="center" spacing={4}>
+        <Grid
+          component={Paper}
+          elevation={0}
+          container
+          direction="column"
+          alignItems="center"
+          spacing={4}
+        >
           <Grid item>
             <Box mt={4}>
               <img
@@ -365,6 +372,8 @@ const App = () => {
 > - Each grid are separated with [`spacing`](https://material-ui.com/customization/spacing) theme property
 > - Each `spacing` is `8px` (minimum: `0`, maximum: `10`)
 > - Each grid automatically resizes on available space (auto-layout)
+> - [`Paper`](https://material-ui.com/components/paper) component can be used as `Grid`'s `component` wrapper
+> - `Paper` component's `props` becomes part of `Grid`'s `props`
 
 #### 3.4. Hidden
 
@@ -389,7 +398,7 @@ const App = () => {
 
 > **Notes:**
 >
-> - [`Hidden`](https://next.material-ui.com/components/hidden) toggles component visibility with breakpoints
+> - [`Hidden`](https://material-ui.com/components/hidden) toggles component visibility with breakpoints
 > - It is used in conjuction with the `Grid` component
 > - By default, `js` is used to responsively hide components
 > - `up` or `down` `props` hides _at_ or _above_ or _below_ breakpoint
