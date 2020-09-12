@@ -13,6 +13,7 @@ import {
   CssBaseline,
   Grid,
   Hidden,
+  Paper,
   Typography,
 } from "@material-ui/core";
 import { Mood, MoreHoriz } from "@material-ui/icons";
@@ -40,7 +41,14 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Container className={root} disableGutters={true}>
-        <Grid container direction="column" alignItems="center" spacing={4}>
+        <Grid
+          component={Paper}
+          elevation={0}
+          container
+          direction="column"
+          alignItems="center"
+          spacing={4}
+        >
           <Grid item>
             <Box mt={4}>
               <img
