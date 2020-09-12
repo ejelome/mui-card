@@ -389,7 +389,7 @@ const App = () => {
 
 > **Notes:**
 >
-> - [`Hidden`](https://next.material-ui.com/components/hidden) toggles component visibility with breakpoints
+> - [`Hidden`](https://material-ui.com/components/hidden) toggles component visibility with breakpoints
 > - It is used in conjuction with the `Grid` component
 > - By default, `js` is used to responsively hide components
 > - `up` or `down` `props` hides _at_ or _above_ or _below_ breakpoint
