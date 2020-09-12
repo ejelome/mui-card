@@ -31,6 +31,7 @@ Learn [Material-UI](https://material-ui.com) with a business card
     - [3. Layout](#3-layout)
       - [3.1. Box](#31-box)
       - [3.2. Container](#32-container)
+      - [3.3. Grid](#33-grid)
   - [License](#license)
 
 <!-- markdown-toc end -->
@@ -284,7 +285,7 @@ const App …
 
 > **Notes:**
 >
-> - [`Box`](https://material-ui.com/components/box) component can access the full list of [style functions](https://next.material-ui.com/system/basics/#all-inclusive)
+> - [`Box`](https://material-ui.com/components/box) component can access the full list of [style functions](https://material-ui.com/system/basics/#all-inclusive)
 > - Use the `component` property to replace the element wrapper
 
 #### 3.2. Container
@@ -309,6 +310,60 @@ const App = () => {
 > - [`Container`](https://material-ui.com/components/container) centers its children horizontally
 > - By default, `maxWidth` uses `lg` as grid breakpoint
 > - `disableGutters` removes left and right `padding`
+
+#### 3.3. Grid
+
+```javascript
+// file: src/App.js
+// …
+import { Box, …, Grid, Typography } from "@material-ui/core";
+import { Mood } from "@material-ui/icons";
+// …
+const App = () => {
+  // …
+  return (
+    // …
+      <Container …>
+        <Grid container direction="column" alignItems="center" spacing={4}>
+          <Grid item>
+            <Box mt={4}>
+              <img
+                alt=""
+                src="https://via.placeholder.com/96x96"
+                width="96"
+                height="96"
+              />
+            </Box>
+          </Grid>
+          <Grid item>
+            <Typography variant="h1">title</Typography>
+          </Grid>
+          <Grid item>
+            <Typography variant="subtitle1">subtitle</Typography>
+          </Grid>
+          <Grid item>
+            <Typography variant="body1">description</Typography>
+          </Grid>
+          <Grid item container justify="space-evenly">
+            <Mood />
+          </Grid>
+        </Grid>
+      </Container>
+    // …
+```
+
+> **Notes:**
+>
+> - [`Grid`](https://material-ui.com/components/grid) is based on [Material Design](https://material.io/design/layout/responsive-layout-grid.html)'s 12-column [responsive layout grid](https://material.io/design/layout/responsive-layout-grid.html)
+> - It implements the grid system using [CSS Flexible Box Layout Module](https://www.w3.org/TR/css-flexbox-1)
+> - Types of grid layout includes: `container` or `item`
+> - Supports nested grids by using both `container` and `item`
+> - Supports five available grid [breakpoints](https://material-ui.com/customization/breakpoints/#default-breakpoints): `xs`, `sm`, `md`, `lg` and `xl`
+> - Each grid uses percentage (fluid) and relative to parent element
+> - Each grid has `padding` used to space content within the each grid item
+> - Each grid are separated with [`spacing`](https://material-ui.com/customization/spacing) theme property
+> - Each `spacing` is `8px` (minimum: `0`, maximum: `10`)
+> - Each grid automatically resizes on available space (auto-layout)
 
 ---
 
