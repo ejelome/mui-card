@@ -32,6 +32,7 @@ Learn [Material-UI](https://material-ui.com) with a business card
       - [3.1. Box](#31-box)
       - [3.2. Container](#32-container)
       - [3.3. Grid](#33-grid)
+      - [3.4. Hidden](#34-hidden)
   - [License](#license)
 
 <!-- markdown-toc end -->
@@ -364,6 +365,35 @@ const App = () => {
 > - Each grid are separated with [`spacing`](https://material-ui.com/customization/spacing) theme property
 > - Each `spacing` is `8px` (minimum: `0`, maximum: `10`)
 > - Each grid automatically resizes on available space (auto-layout)
+
+#### 3.4. Hidden
+
+```javascript
+// file: src/App.js
+// …
+import { …, Hidden, … } from "@material-ui/core";
+import { …, MoreHoriz } from "@material-ui/icons";
+// …
+const App = () => {
+  // …
+  return (
+    // …
+        <Grid …>
+          // …
+            <Mood />
+            <Hidden smUp>
+              <MoreHoriz />
+            </Hidden>
+          // …
+```
+
+> **Notes:**
+>
+> - [`Hidden`](https://next.material-ui.com/components/hidden) toggles component visibility with breakpoints
+> - It is used in conjuction with the `Grid` component
+> - By default, `js` is used to responsively hide components
+> - `up` or `down` `props` hides _at_ or _above_ or _below_ breakpoint
+> - `only` hides _at exact_ (`String` or `Array`) of breakpoint(s)
 
 ---
 
