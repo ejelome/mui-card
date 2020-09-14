@@ -33,6 +33,8 @@ Learn [Material-UI](https://material-ui.com) with a business card
       - [3.2. Container](#32-container)
       - [3.3. Grid](#33-grid)
       - [3.4. Hidden](#34-hidden)
+    - [4. Inputs](#4-inputs)
+      - [4.1. Button](#41-button)
   - [License](#license)
 
 <!-- markdown-toc end -->
@@ -403,6 +405,39 @@ const App = () => {
 > - By default, `js` is used to responsively hide components
 > - `up` or `down` `props` hides _at_ or _above_ or _below_ breakpoint
 > - `only` hides _at exact_ (`String` or `Array`) of breakpoint(s)
+
+### 4. Inputs
+
+#### 4.1. Button
+
+```javascript
+// …
+import { …, IconButton, … } from "@material-ui/core";
+import { Facebook, … } from "@material-ui/icons";
+// …
+const App …
+  // …
+  return (
+    // …
+          <Grid item container justify="space-evenly">
+            <IconButton href="https://facebook.com">
+              <Facebook />
+            </IconButton>
+            // …
+```
+
+> **Notes:**
+>
+> - [`Button`](https://material-ui.com/components/buttons) component communicates user actions
+> - `Button` component typically is used in conjunction with `onClick` event
+> - Use `contained` as `variant` `props` for primary and highly important actions
+> - Use `outlined` as `variant` `props` for non-primary but important actions
+> - Use a regular button (without `variant` `props`) for non-critical actions
+> - Use `startIcon` `props` to prepend `Button` with an [icon](https://material-ui.com/components/icons) component
+> - Use `IconButton` component to simply render a clickable icon
+> - Use `LoadingButton` component to show pending state and disable interaction
+> - For internal links, use `Link` component from [`react-router-dom`](https://github.com/ReactTraining/react-router) with `component` and `to` `props`
+> - For external links, use `href` `props` (e.g. `<Button href={url}>…`) `url`'s [protocol](https://developer.mozilla.org/en-US/docs/Glossary/Protocol) is required
 
 ---
 
