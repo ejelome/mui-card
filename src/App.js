@@ -13,10 +13,11 @@ import {
   CssBaseline,
   Grid,
   Hidden,
+  IconButton,
   Paper,
   Typography,
 } from "@material-ui/core";
-import { Mood, MoreHoriz } from "@material-ui/icons";
+import { Facebook, MoreHoriz } from "@material-ui/icons";
 import {
   createMuiTheme,
   makeStyles,
@@ -69,7 +70,9 @@ const App = () => {
             <Typography variant="body1">description</Typography>
           </Grid>
           <Grid item container justify="space-evenly">
-            <Mood />
+            <IconButton href="https://facebook.com">
+              <Facebook />
+            </IconButton>
             <Hidden smUp>
               <MoreHoriz />
             </Hidden>
