@@ -35,6 +35,8 @@ Learn [Material-UI](https://material-ui.com) with a business card
       - [3.4. Hidden](#34-hidden)
     - [4. Inputs](#4-inputs)
       - [4.1. Button](#41-button)
+    - [5. Navigation](#5-navigation)
+      - [5.1. Links](#51-links)
   - [License](#license)
 
 <!-- markdown-toc end -->
@@ -440,6 +442,34 @@ const App …
 > - For internal links, use `Link` component from [`react-router-dom`](https://github.com/ReactTraining/react-router) with `component` and `to` `props`
 > - `react-router-dom`'s `Link` component must be within [`react-router`](https://reactrouter.com)'s '`MemoryRouter` component
 > - For external links, use `href` `props` (e.g. `<Button href={url}>…`) `url`'s [protocol](https://developer.mozilla.org/en-US/docs/Glossary/Protocol) is required
+
+### 5. Navigation
+
+#### 5.1. Links
+
+```javascript
+// file: src/App.js
+// …
+import { …, Link, … } from "@material-ui/core";
+// …
+const App …
+  // …
+  return (
+    // …
+          <Grid item>
+            <Link variant="h1" color="inherit">
+              title
+            </Link>
+          // …
+```
+
+> **Notes:**
+>
+> - [`Link`](https://material-ui.com/components/links) component customize anchor elements with theme colors and typography styles
+> - `Links` is built on top of `Typography` component and shares all of its `props`
+> - Use `rel-noopener` to prevent external redirects
+> - Use `rel-noreferrer` to prevent sending _Referer_ header
+> - Implementing internal links is similar with `Button` component
 
 ---
 
