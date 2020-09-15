@@ -89,7 +89,7 @@ $ npm i @material-ui/{core,icons} \
 > **Notes:**
 >
 > - [`icons`](https://material-ui.com/components/material-icons) package are converted [`SvgIcon`](https://material-ui.com/api/svg-icon) components
-> - `SvgIcon`s uses [PascalCase](https://wiki.c2.com/?PascalCase) as naming convention
+> - `SvgIcon`s use [PascalCase](https://wiki.c2.com/?PascalCase) as naming convention
 > - [Roboto](https://fonts.google.com/specimen/Roboto) fonts must be specified manually
 
 #### 1.2. Configure
@@ -110,7 +110,7 @@ const App = () => {
 ```
 
 > **Note:** <br />
-> The [`CssBaseline`](https://material-ui.com/components/css-baseline) fixes inconsistencies across browsers and devices with an opinionated resets.
+> The [`<CssBaseline />`](https://material-ui.com/components/css-baseline) fix inconsistencies across browsers and devices with an opinionated resets.
 
 ##### 1.2.2. Roboto font
 
@@ -154,7 +154,7 @@ const App = () => {
 ```
 
 > **Note:** <br />
-> The [`meta-viewport`](https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag#Enter_viewport_meta_tag) ensures proper rendering and touch zooming for all browsers and devices.
+> The [`<meta name="viewport" />`](https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag#Enter_viewport_meta_tag) ensures proper rendering and touch zooming for all browsers and devices.
 
 ### 2. Theming
 
@@ -207,7 +207,7 @@ const App = () => {
 ```
 
 > **Note:** <br />
-> The [`useTheme`](https://material-ui.com/styles/api/#usetheme-theme) hook returns `theme` object and to access theme properties.
+> The [`useTheme`](https://material-ui.com/styles/api/#usetheme-theme) hook returns the `theme` object that has access to theme's properties.
 
 #### 2.3. hue[shade]
 
@@ -224,7 +224,7 @@ const useStyles = makeStyles(() => ({
 ```
 
 > **Note:** <br />
-> The `grey` object is one of the [color palette](https://material-ui.com/customization/color/#color-palette)s (`grey[50…900]` means `hue[shade]`).
+> The `grey` object is one of MUI's [color palette](https://material-ui.com/customization/color/#color-palette)s (`grey[50…900]` means `hue[shade]`).
 
 #### 2.4. Custom theme
 
@@ -246,8 +246,8 @@ const App = () => {
 
 > **Notes:**
 >
-> - [`createMuiTheme`](https://material-ui.com/customization/theming/#createmuitheme-options-args-theme) returns [default theme](https://material-ui.com/customization/default-theme) object that can be overridden
-> - [`ThemeProvider`](https://material-ui.com/styles/api/#themeprovider) takes `theme` property and makes it available to children
+> - [`createMuiTheme`](https://material-ui.com/customization/theming/#createmuitheme-options-args-theme) returns the [default theme](https://material-ui.com/customization/default-theme) object that can be overridden
+> - [`<ThemeProvider>`](https://material-ui.com/styles/api/#themeprovider) can pass `theme` as property to allow its children to access theme properties
 
 #### 2.5. responsiveFontSizes
 
@@ -290,7 +290,7 @@ const App …
 
 > **Notes:**
 >
-> - [`Box`](https://material-ui.com/components/box) component can access the full list of [style functions](https://material-ui.com/system/basics/#all-inclusive)
+> - [`<Box>`](https://material-ui.com/components/box) can access the full list of [style functions](https://material-ui.com/system/basics/#all-inclusive)
 > - Use the `component` property to replace the element wrapper
 
 #### 3.2. Container
@@ -312,7 +312,7 @@ const App = () => {
 
 > **Notes:**
 >
-> - [`Container`](https://material-ui.com/components/container) centers its children horizontally
+> - [`<Container>`](https://material-ui.com/components/container) centers its children horizontally
 > - By default, `maxWidth` uses `lg` as grid breakpoint
 > - `disableGutters` removes left and right `padding`
 
@@ -366,7 +366,7 @@ const App = () => {
 
 > **Notes:**
 >
-> - [`Grid`](https://material-ui.com/components/grid) is based on [Material Design](https://material.io/design/layout/responsive-layout-grid.html)'s 12-column [responsive layout grid](https://material.io/design/layout/responsive-layout-grid.html)
+> - [`<Grid>`](https://material-ui.com/components/grid) is based on [Material Design](https://material.io/design/layout/responsive-layout-grid.html)'s 12-column [responsive layout grid](https://material.io/design/layout/responsive-layout-grid.html)
 > - It implements the grid system using [CSS Flexible Box Layout Module](https://www.w3.org/TR/css-flexbox-1)
 > - Types of grid layout includes: `container` or `item`
 > - Supports nested grids by using both `container` and `item`
@@ -376,8 +376,8 @@ const App = () => {
 > - Each grid are separated with [`spacing`](https://material-ui.com/customization/spacing) theme property
 > - Each `spacing` is `8px` (minimum: `0`, maximum: `10`)
 > - Each grid automatically resizes on available space (auto-layout)
-> - [`Paper`](https://material-ui.com/components/paper) component can be used as `Grid`'s `component` wrapper
-> - `Paper` component's `props` becomes part of `Grid`'s `props`
+> - [`<Paper>`](https://material-ui.com/components/paper) can be used as `<Grid>`'s `component` wrapper
+> - `<Paper>`'s `props` becomes part of `<Grid>`'s `props`
 
 #### 3.4. Hidden
 
@@ -402,8 +402,8 @@ const App = () => {
 
 > **Notes:**
 >
-> - [`Hidden`](https://material-ui.com/components/hidden) toggles component visibility with breakpoints
-> - It is used in conjuction with the `Grid` component
+> - [`<Hidden>`](https://material-ui.com/components/hidden) toggles component visibility with breakpoints
+> - It is used in conjuction with `<Grid>`
 > - By default, `js` is used to responsively hide components
 > - `up` or `down` `props` hides _at_ or _above_ or _below_ breakpoint
 > - `only` hides _at exact_ (`String` or `Array`) of breakpoint(s)
@@ -431,17 +431,17 @@ const App …
 
 > **Notes:**
 >
-> - [`Button`](https://material-ui.com/components/buttons) component communicates user actions
-> - `Button` component typically is used in conjunction with `onClick` event
+> - [`<Button>`](https://material-ui.com/components/buttons) communicates user actions
+> - `<Button>`s typically is used in conjunction with `onClick` event
 > - Use `contained` as `variant` `props` for primary and highly important actions
 > - Use `outlined` as `variant` `props` for non-primary but important actions
 > - Use a regular button (without `variant` `props`) for non-critical actions
-> - Use `startIcon` `props` to prepend `Button` with an [icon](https://material-ui.com/components/icons) component
-> - Use `IconButton` component to simply render a clickable icon
-> - Use `LoadingButton` component to show pending state and disable interaction
-> - For internal links, use `Link` component from [`react-router-dom`](https://github.com/ReactTraining/react-router) with `component` and `to` `props`
-> - `react-router-dom`'s `Link` component must be within [`react-router`](https://reactrouter.com)'s '`MemoryRouter` component
-> - For external links, use `href` `props` (e.g. `<Button href={url}>…`) `url`'s [protocol](https://developer.mozilla.org/en-US/docs/Glossary/Protocol) is required
+> - Use `startIcon` `props` to prepend `<Button>` with an [icon](https://material-ui.com/ecomponents/icons) component
+> - Use `<IconButton>` component to simply render a clickable icon
+> - Use `<LoadingButton>` component to show pending state and disable interaction
+> - For internal links, use `<Link>` from [`react-router-dom`](https://github.com/ReactTraining/react-router) with `component` and `to` `props`
+> - `react-router-dom`'s `<Link>` must be within [`react-router`](https://reactrouter.com)'s '`<MemoryRouter>`
+> - For external links, use `href` `props` (e.g. `<Button href={url}>…`); `url`'s [protocol](https://developer.mozilla.org/en-US/docs/Glossary/Protocol) is required
 
 ### 5. Navigation
 
@@ -465,11 +465,11 @@ const App …
 
 > **Notes:**
 >
-> - [`Link`](https://material-ui.com/components/links) component customize anchor elements with theme colors and typography styles
-> - `Links` is built on top of `Typography` component and shares all of its `props`
-> - Use `rel-noopener` to prevent external redirects
-> - Use `rel-noreferrer` to prevent sending _Referer_ header
-> - Implementing internal links is similar with `Button` component
+> - [`<Link>`](https://material-ui.com/components/links) customize anchor elements with theme colors and typography styles
+> - `<Link>` is built on top of `<Typography>` and shares all of its `props`
+> - Use `rel="noopener"` to prevent external redirects
+> - Use `rel="noreferrer"` to prevent sending _Referer_ header
+> - Implementing internal links is similar to `<Button>`
 
 ---
 
