@@ -411,6 +411,7 @@ const App = () => {
 #### 4.1. Button
 
 ```javascript
+// file: src/App.js
 // …
 import { …, IconButton, … } from "@material-ui/core";
 import { Facebook, … } from "@material-ui/icons";
@@ -437,6 +438,7 @@ const App …
 > - Use `IconButton` component to simply render a clickable icon
 > - Use `LoadingButton` component to show pending state and disable interaction
 > - For internal links, use `Link` component from [`react-router-dom`](https://github.com/ReactTraining/react-router) with `component` and `to` `props`
+> - `react-router-dom`'s `Link` component must be within [`react-router`](https://reactrouter.com)'s '`MemoryRouter` component
 > - For external links, use `href` `props` (e.g. `<Button href={url}>…`) `url`'s [protocol](https://developer.mozilla.org/en-US/docs/Glossary/Protocol) is required
 
 ---
