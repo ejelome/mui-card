@@ -14,6 +14,7 @@ import {
   Grid,
   Hidden,
   IconButton,
+  Link,
   Paper,
   Typography,
 } from "@material-ui/core";
@@ -61,7 +62,9 @@ const App = () => {
             </Box>
           </Grid>
           <Grid item>
-            <Typography variant="h1">title</Typography>
+            <Link variant="h1" color="inherit">
+              title
+            </Link>
           </Grid>
           <Grid item>
             <Typography variant="subtitle1">subtitle</Typography>
