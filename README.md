@@ -13,8 +13,6 @@ Learn [Material-UI](https://material-ui.com) with a business card
     - [Install](#install)
     - [Serve](#serve)
   - [Prototypes](#prototypes)
-    - [lt_sm](#lt_sm)
-    - [gte_sm](#gte_sm)
   - [Lessons](#lessons)
     - [1. Setup](#1-setup)
       - [1.1. Install](#11-install)
@@ -62,16 +60,8 @@ $ npm start
 ## Prototypes
 
 [![](./.prototypes/thumbnails/breadboard.jpg)](./.prototypes/images/breadboard.jpg "Breadboard")
-
-### lt_sm
-
-[![](./.prototypes/thumbnails/lt_sm/sketch.jpg)](./.prototypes/images/lt_sm/sketch.jpg "Sketch")
-[![](./.prototypes/thumbnails/lt_sm/elements.jpg)](./.prototypes/images/lt_sm/elements.jpg "Elements")
-
-### gte_sm
-
-[![](./.prototypes/thumbnails/gte_sm/sketch.jpg)](./.prototypes/images/gte_sm/sketch.jpg "Sketch")
-[![](./.prototypes/thumbnails/gte_sm/elements.jpg)](./.prototypes/images/gte_sm/elements.jpg "Elements")
+[![](./.prototypes/thumbnails/sketch.jpg)](./.prototypes/images/sketch.jpg "Sketch")
+[![](./.prototypes/thumbnails/elements.jpg)](./.prototypes/images/elements.jpg "Elements")
 
 ---
 
