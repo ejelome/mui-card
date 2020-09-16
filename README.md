@@ -35,6 +35,8 @@ Learn [Material-UI](https://material-ui.com) with a card
       - [4.1. Button](#41-button)
     - [5. Navigation](#5-navigation)
       - [5.1. Links](#51-links)
+    - [6. Surfaces](#6-surfaces)
+      - [6.1. Card](#61-card)
   - [License](#license)
 
 <!-- markdown-toc end -->
@@ -460,6 +462,80 @@ const App …
 > - Use `rel="noopener"` to prevent external redirects
 > - Use `rel="noreferrer"` to prevent sending _Referer_ header
 > - Implementing internal links is similar to `<Button>`
+
+### 6. Surfaces
+
+#### 6.1. Card
+
+```javascript
+// file: src/App.js
+// …
+import {
+  …,
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
+  …
+} from "@material-ui/core";
+
+const useStyles = makeStyles((themes) => ({
+  root: {
+    // …
+    textAlign: "center",
+    // …
+    "& .MuiCardHeader-root": { display: "inline" },
+    "& .MuiCardHeader-avatar": { marginTop: themes.spacing(4) },
+    "& .MuiCardActions-root": { display: "flex", justifyContent: "center" },
+  },
+}));
+
+// …
+const App …
+  // …
+  return (
+    // …
+      <Container …>
+        <Card component={Paper}>
+          <CardHeader
+            avatar={
+              <img
+                alt=""
+                src="https://via.placeholder.com/96x96"
+                width="96"
+                height="96"
+              />
+            }
+          />
+          <CardContent>
+            <Link variant="h1" color="inherit">
+              title
+            </Link>
+            <Typography variant="subtitle1">subtitle</Typography>
+            <Typography variant="body1">description</Typography>
+          </CardContent>
+        </Card>
+        <CardActions>
+          <IconButton href="https://facebook.com">
+            <Facebook />
+          </IconButton>
+          <Hidden smUp>
+            <MoreHoriz />
+          </Hidden>
+        </CardActions>
+      </Container>
+    // …
+```
+
+> **Notes:**
+>
+> - [`<Card>`](https://material-ui.com/components/cards) wraps content and actions for a single topic
+> - `<CardMedia>` acts as banner and `<CardHeader>` as header
+> - `<CardContent>` acts as body and `<CardActions>` as footer
+> - `<CardActions>` contain UI controls and is placed at the bottom
+> - `<Card>` inherits from `<Paper>` and so its `props` are availabe
+> - Use _only_ as entry point to a more complex and detailed information
+> - Use `outline` as value for `variant` `props` to render an outlined card
 
 ---
 
