@@ -37,6 +37,7 @@ Learn [Material-UI](https://material-ui.com) with a card
       - [5.1. Links](#51-links)
     - [6. Surfaces](#6-surfaces)
       - [6.1. Card](#61-card)
+      - [6.2. Paper](#62-paper)
   - [License](#license)
 
 <!-- markdown-toc end -->
@@ -536,6 +537,21 @@ const App …
 > - `<Card>` inherits from `<Paper>` and so its `props` are availabe
 > - Use _only_ as entry point to a more complex and detailed information
 > - Use `outline` as value for `variant` `props` to render an outlined card
+
+#### 6.2. Paper
+
+```javascript
+// Usage:
+<Paper>…</Paper>                      // wraps child components
+<Wrapper component={Paper}></Wrapper> // use <Paper> as wrapper
+```
+
+> **Notes:**
+>
+> - [`<Paper>`](https://material-ui.com/components/paper) tries to emulate properties of a real paper to the screen
+> - It can be used to explicitly wrap child elements
+> - Or be assigned as wrapper with `component` `props`
+> - It is typically used as the _main_ background of the application
 
 ---
 
