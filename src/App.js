@@ -8,14 +8,15 @@ import "fontsource-roboto/500.css";
 import "fontsource-roboto/700.css";
 
 import {
-  Box,
   Container,
   CssBaseline,
-  Grid,
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
   Hidden,
   IconButton,
   Link,
-  Paper,
   Typography,
 } from "@material-ui/core";
 import { Facebook, MoreHoriz } from "@material-ui/icons";
@@ -27,10 +28,15 @@ import {
 } from "@material-ui/core/styles";
 import { grey } from "@material-ui/core/colors";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((themes) => ({
   root: {
     backgroundColor: grey[900],
+    maxWidth: themes.breakpoints.values.sm,
+    textAlign: "center",
     "& h1": { color: grey[50] },
+    "& .MuiCardHeader-root": { display: "inline" },
+    "& .MuiCardHeader-avatar": { marginTop: themes.spacing(4) },
+    "& .MuiCardActions-root": { display: "flex", justifyContent: "center" },
   },
 }));
 
@@ -43,44 +49,33 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Container className={root} disableGutters={true}>
-        <Grid
-          component={Paper}
-          elevation={0}
-          container
-          direction="column"
-          alignItems="center"
-          spacing={4}
-        >
-          <Grid item>
-            <Box mt={4}>
+        <Card>
+          <CardHeader
+            avatar={
               <img
                 alt=""
                 src="https://via.placeholder.com/96x96"
                 width="96"
                 height="96"
               />
-            </Box>
-          </Grid>
-          <Grid item>
+            }
+          />
+          <CardContent>
             <Link variant="h1" color="inherit">
               title
             </Link>
-          </Grid>
-          <Grid item>
             <Typography variant="subtitle1">subtitle</Typography>
-          </Grid>
-          <Grid item>
             <Typography variant="body1">description</Typography>
-          </Grid>
-          <Grid item container justify="space-evenly">
-            <IconButton href="https://facebook.com">
-              <Facebook />
-            </IconButton>
-            <Hidden smUp>
-              <MoreHoriz />
-            </Hidden>
-          </Grid>
-        </Grid>
+          </CardContent>
+        </Card>
+        <CardActions>
+          <IconButton href="https://facebook.com">
+            <Facebook />
+          </IconButton>
+          <Hidden smUp>
+            <MoreHoriz />
+          </Hidden>
+        </CardActions>
       </Container>
     </ThemeProvider>
   );
