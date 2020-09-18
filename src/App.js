@@ -8,6 +8,7 @@ import "fontsource-roboto/500.css";
 import "fontsource-roboto/700.css";
 
 import {
+  Avatar,
   Container,
   CssBaseline,
   Card,
@@ -37,6 +38,11 @@ const useStyles = makeStyles((theme) => ({
     "& .MuiCardHeader-root": { display: "inline" },
     "& .MuiCardHeader-avatar": { marginTop: theme.spacing(4) },
     "& .MuiCardActions-root": { display: "flex", justifyContent: "center" },
+    "& .MuiAvatar-root": {
+      margin: "0 auto",
+      width: theme.spacing(12),
+      height: theme.spacing(12),
+    },
   },
 }));
 
@@ -51,14 +57,7 @@ const App = () => {
       <Container className={root} disableGutters={true}>
         <Card>
           <CardHeader
-            avatar={
-              <img
-                alt=""
-                src="https://via.placeholder.com/96x96"
-                width="96"
-                height="96"
-              />
-            }
+            avatar={<Avatar alt="" src="https://via.placeholder.com/96x96" />}
           />
           <CardContent>
             <Link variant="h1" color="inherit">

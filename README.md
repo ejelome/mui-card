@@ -38,6 +38,8 @@ Learn [Material-UI](https://material-ui.com) with a card
     - [6. Surfaces](#6-surfaces)
       - [6.1. Card](#61-card)
       - [6.2. Paper](#62-paper)
+    - [7. Data Display](#7-data-display)
+      - [7.1. Avatar](#71-avatar)
   - [License](#license)
 
 <!-- markdown-toc end -->
@@ -552,6 +554,47 @@ const App …
 > - It can be used to explicitly wrap child elements
 > - Or be assigned as wrapper with `component` `props`
 > - It is typically used as the _main_ background of the application
+
+### 7. Data Display
+
+#### 7.1. Avatar
+
+```javascript
+// file: src/App.js
+// …
+import { Avatar, … } from "@material-ui/core";
+// …
+const useStyles …
+  root: {
+    // …
+    "& .MuiAvatar-root": {
+      margin: "0 auto",
+      width: theme.spacing(12),
+      height: theme.spacing(12),
+    },
+  },
+}));
+// …
+const App …
+  // …
+  return (
+    // …
+          <CardHeader
+            avatar={<Avatar alt="" src="https://via.placeholder.com/96x96" />}
+          />
+          // …
+```
+
+> **Notes:**
+>
+> - [`<Avatar>`](https://material-ui.com/components/avatars) is used as graphical representation of a user
+> - Use `src` or `srcSet` `props` to display an image avatar
+> - Wrap icon or text as `children` `props` to display as avatar
+> - Use `width` and `height` CSS properties to resize the avatar
+> - Use `variant` `props` to shape the avatar
+> - Broken avatar fallback from `children` to `alt` to a generic icon
+> - Use `AvatarGroup` to render stacked avatars
+> - Use [`<Badge>`](https://material-ui.com/components/badges) for online or followers effect
 
 ---
 
