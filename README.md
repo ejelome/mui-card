@@ -480,13 +480,13 @@ import {
   …
 } from "@material-ui/core";
 
-const useStyles = makeStyles((themes) => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     // …
     textAlign: "center",
     // …
     "& .MuiCardHeader-root": { display: "inline" },
-    "& .MuiCardHeader-avatar": { marginTop: themes.spacing(4) },
+    "& .MuiCardHeader-avatar": { marginTop: theme.spacing(4) },
     "& .MuiCardActions-root": { display: "flex", justifyContent: "center" },
   },
 }));
