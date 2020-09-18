@@ -28,14 +28,14 @@ import {
 } from "@material-ui/core/styles";
 import { grey } from "@material-ui/core/colors";
 
-const useStyles = makeStyles((themes) => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: grey[900],
-    maxWidth: themes.breakpoints.values.sm,
+    maxWidth: theme.breakpoints.values.sm,
     textAlign: "center",
     "& h1": { color: grey[50] },
     "& .MuiCardHeader-root": { display: "inline" },
-    "& .MuiCardHeader-avatar": { marginTop: themes.spacing(4) },
+    "& .MuiCardHeader-avatar": { marginTop: theme.spacing(4) },
     "& .MuiCardActions-root": { display: "flex", justifyContent: "center" },
   },
 }));
