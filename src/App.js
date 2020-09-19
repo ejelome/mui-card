@@ -15,6 +15,7 @@ import {
   CardActions,
   CardContent,
   CardHeader,
+  Divider,
   Hidden,
   IconButton,
   Link,
@@ -64,6 +65,7 @@ const App = () => {
               title
             </Link>
             <Typography variant="subtitle1">subtitle</Typography>
+            <Divider variant="middle" />
             <Typography variant="body1">description</Typography>
           </CardContent>
         </Card>
