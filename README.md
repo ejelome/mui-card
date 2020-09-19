@@ -42,6 +42,8 @@ Learn [Material-UI](https://material-ui.com) with a card
       - [7.1. Avatar](#71-avatar)
       - [7.2. Divider](#72-divider)
       - [7.3 Typography](#73-typography)
+    - [8. Utils](#8-utils)
+      - [8.1. CssBaseline](#81-cssbaseline)
   - [License](#license)
 
 <!-- markdown-toc end -->
@@ -640,6 +642,29 @@ const App …
 > - Use [`theme.typography`](https://material-ui.com/customization/default-theme/?expand-path=$.typography) to access typography properties
 > - Change elements with `createMuiTheme` function and `variantMapping` object
 > - `variantMapping` is under `components.MuiTypography.defaultProps` object
+
+### 8. Utils
+
+#### 8.1. CssBaseline
+
+```javascript
+// Usage:
+<CssBaseline />                          // global reset
+<ScopedCssBaseline>…</ScopedCssBaseline> // scoped reset
+```
+
+> **Notes:**
+>
+> - [`<CssBaseline>`](https://material-ui.com/components/css-baseline) normalizes elements similar to [normalize.css](https://github.com/necolas/normalize.css)
+> - Set `<body>`'s `margin` value to `0`
+> - Set `<body>`'s background to `theme.palette.background.default`
+> - For print devices, `<body>`'s background is set to plain white
+> - Set `<html>`'s `box-sizing` value to `border-box`
+> - Set all elements' `box-sizing` value to `inherit` (including `::before` and `::after`)
+> - Set `<body>`'s font properties to `theme.typography.body2`
+> - No `font-size` is set on `<html>`
+> - Set `<b>` and `<strong>`'s `font-weight` value to `theme.typography.fontWeightBold`
+> - Set `<html>` and `<body>`'s `font-smoothing` value to `antialiased`
 
 ---
 
