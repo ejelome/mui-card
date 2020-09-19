@@ -41,6 +41,7 @@ Learn [Material-UI](https://material-ui.com) with a card
     - [7. Data Display](#7-data-display)
       - [7.1. Avatar](#71-avatar)
       - [7.2. Divider](#72-divider)
+      - [7.3 Typography](#73-typography)
   - [License](#license)
 
 <!-- markdown-toc end -->
@@ -623,6 +624,22 @@ const App …
 > - Use `variant` `props` to specify style (e.g. `inset`)
 > - Use `textAlign` `props` to align text (e.g. `right`)
 > - Use `orientation` `props` to set orientation (e.g. `vertical`)
+
+#### 7.3 Typography
+
+```javascript
+// Usage:
+<Typography>…</Typography>
+```
+
+> **Notes:**
+>
+> - [`<Typography>`](https://material-ui.com/components/typography) is used to present a designed content
+> - It uses [type scale](https://material.io/design/typography/the-type-system.html#type-scale) for consistent progression of font sizes
+> - It uses _4:5:1_ [color contrast ratio](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html) and [`rem`](https://next.material-ui.com/customization/typography/#font-size) as font size unit
+> - Use [`theme.typography`](https://material-ui.com/customization/default-theme/?expand-path=$.typography) to access typography properties
+> - Change elements with `createMuiTheme` function and `variantMapping` object
+> - `variantMapping` is under `components.MuiTypography.defaultProps` object
 
 ---
 
