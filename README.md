@@ -40,6 +40,7 @@ Learn [Material-UI](https://material-ui.com) with a card
       - [6.2. Paper](#62-paper)
     - [7. Data Display](#7-data-display)
       - [7.1. Avatar](#71-avatar)
+      - [7.2. Divider](#72-divider)
   - [License](#license)
 
 <!-- markdown-toc end -->
@@ -595,6 +596,33 @@ const App …
 > - Broken avatar fallback from `children` to `alt` to a generic icon
 > - Use `AvatarGroup` to render stacked avatars
 > - Use [`<Badge>`](https://material-ui.com/components/badges) for online or followers effect
+
+#### 7.2. Divider
+
+```javascript
+// file: src/App.js
+// …
+import { …, Divider, … } from "@material-ui/core";
+// …
+const App …
+  // …
+  return (
+    // …
+            <Typography …>…</Typography>
+            <Divider variant="middle" />
+            // …
+```
+
+> **Notes:**
+>
+> - [`<Divider>`](https://material-ui.com/components/dividers) separates different contents into clear groups
+> - `<Divider />` uses `<hr />` by default (replace with `component` `props`)
+> - Use `divider` `props` on `<ListItem>` to save rendering it separately
+> - Use `li` as `component` `props` value when used with `<li>` elements
+> - Use `div` as `component` `props` value to include text
+> - Use `variant` `props` to specify style (e.g. `inset`)
+> - Use `textAlign` `props` to align text (e.g. `right`)
+> - Use `orientation` `props` to set orientation (e.g. `vertical`)
 
 ---
 
