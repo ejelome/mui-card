@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/43c883da-4b41-47a4-b23d-0bef9dbf86d4/deploy-status)](https://app.netlify.com/sites/ejelome-mui-card/deploys)
+
 # mui-card
 
 Learn [Material-UI](https://material-ui.com) with a card
@@ -9,10 +11,15 @@ Learn [Material-UI](https://material-ui.com) with a card
 **Table of Contents**
 
 - [mui-card](#mui-card)
-  - [Usage](#usage)
+  - [Demo](#demo)
+  - [Setup](#setup)
     - [Install](#install)
+  - [Usage](#usage)
     - [Serve](#serve)
+    - [Test](#test)
+    - [Build](#build)
   - [Prototypes](#prototypes)
+    - [Mobile](#mobile)
   - [Lessons](#lessons)
     - [1. Setup](#1-setup)
       - [1.1. Install](#11-install)
@@ -50,7 +57,13 @@ Learn [Material-UI](https://material-ui.com) with a card
 
 ---
 
-## Usage
+## Demo
+
+See <https://ejelome-mui-card.netlify.app>.
+
+---
+
+## Setup
 
 ### Install
 
@@ -58,15 +71,33 @@ Learn [Material-UI](https://material-ui.com) with a card
 $ npm [install|isntall|add|i]
 ```
 
+---
+
+## Usage
+
 ### Serve
 
 ```shell
 $ npm start
 ```
 
+### Test
+
+```shell
+$ npm [test|tst|t]
+```
+
+### Build
+
+```shell
+$ npm run build
+```
+
 ---
 
 ## Prototypes
+
+### Mobile
 
 [![](./.prototypes/thumbnails/breadboard.jpg)](./.prototypes/images/breadboard.jpg "Breadboard")
 [![](./.prototypes/thumbnails/sketch.jpg)](./.prototypes/images/sketch.jpg "Sketch")
