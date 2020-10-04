@@ -51,6 +51,7 @@ Learn [Material-UI](https://material-ui.com) with a card
       - [7.3 Typography](#73-typography)
     - [8. Utils](#8-utils)
       - [8.1. CssBaseline](#81-cssbaseline)
+  - [References](#references)
   - [License](#license)
 
 <!-- markdown-toc end -->
@@ -696,6 +697,12 @@ const App …
 > - No `font-size` is set on `<html>`
 > - Set `<b>` and `<strong>`'s `font-weight` value to `theme.typography.fontWeightBold`
 > - Set `<html>` and `<body>`'s `font-smoothing` value to `antialiased`
+
+---
+
+## References
+
+- [Material-UI](https://material-ui.com): [Getting Started](https://material-ui.com/getting-started/usage)
 
 ---
 
