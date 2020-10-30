@@ -335,23 +335,46 @@ $ npm i @material-ui/{core,icons} \
 
 #### 2.2. useTheme
 
-```javascript
-// file: src/App.js
-// …
-import { …, useTheme } from "@material-ui/core/styles";
+<details>
+  <summary>src/App.js</summary>
 
-// …
-const App = () => {
-  // …
-  const {
-    palette: { type },
-  } = useTheme();
+```diff
+ import "fontsource-roboto/300.css";
+ import "fontsource-roboto/400.css";
+ import "fontsource-roboto/500.css";
+ import "fontsource-roboto/700.css";
 
-  return (
-    <div …>
-      // …
-      <Typography …>hello, {type} world…
+ import { CssBaseline, Typography } from "@material-ui/core";
+-import { makeStyles } from "@material-ui/core/styles";
++import { makeStyles, useTheme } from "@material-ui/core/styles";
+ import React from "react";
+
+ const useStyles = makeStyles(({ palette }) => ({
+   root: {
+     backgroundColor: palette.common.black,
+     "& h1": { color: palette.common.white },
+   },
+ }));
+
+ const App = () => {
+   const { root } = useStyles();
++  const { palette } = useTheme();
+
+   return (
+     <div className={root}>
+       <CssBaseline />
+-      <Typography variant="h1">hello, world</Typography>
++      <Typography variant="h1">hello, {palette.type} world</Typography>
+     </div>
+   );
+ };
+
+ export default App;
 ```
+
+</details>
+
+[&#9654; Run code &rarr;](https://codesandbox.io/s/mui-card-lesson-22-beg2g)
 
 > **Note:** <br />
 > The [`useTheme`](https://material-ui.com/styles/api/#usetheme-theme) hook returns the `theme` object that has access to theme's properties.
