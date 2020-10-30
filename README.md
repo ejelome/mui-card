@@ -1524,11 +1524,15 @@ $ npm i @material-ui/{core,icons} \
 
 #### 8.1. CssBaseline
 
+<details>
+  <summary>&lt;CssBaseline&gt;</summary>
+
 ```javascript
-// Usage:
 <CssBaseline />                          // global reset
 <ScopedCssBaseline>…</ScopedCssBaseline> // scoped reset
 ```
+
+</details>
 
 > **Notes:**
 >
