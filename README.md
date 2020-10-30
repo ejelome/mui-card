@@ -175,23 +175,42 @@ $ npm i @material-ui/{core,icons} \
 
 ##### 1.2.2. Roboto font
 
-```javascript
-// file: src/App.js
-// …
-import "fontsource-roboto/300.css";
-import "fontsource-roboto/400.css";
-import "fontsource-roboto/500.css";
-import "fontsource-roboto/700.css";
+<details>
+  <summary>src/App.js</summary>
 
-import { …, Typography } from "@material-ui/core";
+```diff
+-import { CssBaseline } from "@material-ui/core";
+-import React from "react";
+-
+-const App = () => (
+-  <>
+-    <CssBaseline />
+-  </>
+-);
+-
+-export default App;
++import "fontsource-roboto/300.css";
++import "fontsource-roboto/400.css";
++import "fontsource-roboto/500.css";
++import "fontsource-roboto/700.css";
 
-const App = () => {
-  return (
-    <div …>
-      // …
-      <Typography variant="h1">hello, world</Typography>
-    // …
+-import { CssBaseline } from "@material-ui/core";
++import { CssBaseline, Typography } from "@material-ui/core";
+ import React from "react";
+
+ const App = () => (
+   <>
+     <CssBaseline />
++    <Typography variant="h1">hello, world</Typography>
+   </>
+ );
+
+ export default App;
 ```
+
+</details>
+
+[&#9654; Run code &rarr;](https://codesandbox.io/s/mui-card-lesson-122-k3enh)
 
 > **Note:** <br />
 > Only `300`, `400`, `500` and `700` of typography font weights are being used by Material-UI.
