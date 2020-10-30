@@ -282,24 +282,49 @@ $ npm i @material-ui/{core,icons} \
 
 #### 2.1. makeStyles
 
-```javascript
-// file: src/App.js
-// …
-import { makeStyles } from "@material-ui/core/styles";
+<details>
+  <summary>src/App.js</summary>
 
-const useStyles = makeStyles(({ palette: { common: { black, white } } }) => ({
-  root: {
-    backgroundColor: black,
-    "& h1": { color: white },
-  },
-}));
+```diff
+ import "fontsource-roboto/300.css";
+ import "fontsource-roboto/400.css";
+ import "fontsource-roboto/500.css";
+ import "fontsource-roboto/700.css";
 
-const App = () => {
-  const { root } = useStyles();
-  return (
-    <div className={root}>
-      // …
+ import { CssBaseline, Typography } from "@material-ui/core";
++import { makeStyles } from "@material-ui/core/styles";
+ import React from "react";
+
+-const App = () => (
+-  <>
+-    <CssBaseline />
+-    <Typography variant="h1">hello, world</Typography>
+-  </>
+-);
++const useStyles = makeStyles(({ palette }) => ({
++  root: {
++    backgroundColor: palette.common.black,
++    "& h1": { color: palette.common.white },
++  },
++}));
++
++const App = () => {
++  const { root } = useStyles();
++
++  return (
++    <div className={root}>
++      <CssBaseline />
++      <Typography variant="h1">hello, world</Typography>
++    </div>
++  );
++};
+
+ export default App;
 ```
+
+</details>
+
+[&#9654; Run code &rarr;](https://codesandbox.io/s/mui-card-lesson-21-w06uw)
 
 > **Notes:**
 >
