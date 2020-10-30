@@ -127,18 +127,48 @@ $ npm i @material-ui/{core,icons} \
 
 ##### 1.2.1. CssBaseline
 
-```javascript
-// file: src/App.js
-// …
+<details>
+  <summary>src/App.js</summary>
 
-import { CssBaseline } from "@material-ui/core";
+```diff
+-import React from 'react';
+-import logo from './logo.svg';
+-import './App.css';
++import { CssBaseline } from "@material-ui/core";
++import React from "react";
 
-const App = () => {
-  return (
-    <div …>
-      <CssBaseline />
-    // …
+-function App() {
+-  return (
+-    <div className="App">
+-      <header className="App-header">
+-        <img src={logo} className="App-logo" alt="logo" />
+-        <p>
+-          Edit <code>src/App.js</code> and save to reload.
+-        </p>
+-        <a
+-          className="App-link"
+-          href="https://reactjs.org"
+-          target="_blank"
+-          rel="noopener noreferrer"
+-        >
+-          Learn React
+-        </a>
+-      </header>
+-    </div>
+-  );
+-}
++const App = () => (
++  <>
++    <CssBaseline />
++  </>
++);
+
+ export default App;
 ```
+
+</details>
+
+[&#9654; Run code &rarr;](https://codesandbox.io/s/mui-card-lesson-121-wmigr)
 
 > **Note:** <br />
 > The [`<CssBaseline />`](https://material-ui.com/components/css-baseline) fix inconsistencies across browsers and devices with an opinionated resets.
