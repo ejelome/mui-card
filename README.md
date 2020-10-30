@@ -1261,11 +1261,15 @@ $ npm i @material-ui/{core,icons} \
 
 #### 6.2. Paper
 
+<details>
+  <summary>&lt;Paper&gt;</summary>
+
 ```javascript
-// Usage:
 <Paper>…</Paper>                      // wraps child components
 <Wrapper component={Paper}></Wrapper> // use <Paper> as wrapper
 ```
+
+</details>
 
 > **Notes:**
 >
