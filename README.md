@@ -546,25 +546,65 @@ $ npm i @material-ui/{core,icons} \
 
 #### 3.1. Box
 
-```javascript
-// file: src/App.js
-// …
-import { Box, … } from "@material-ui/core";
+<details>
+  <summary>src/App.js</summary>
 
-const App …
-  // …
-  return (
-    // …
-    <ThemeProvider …>
-      // …
-        <Typography …>
-          hello,
-          <Box component="span" bgcolor="text.secondary" color="text.primary">
-            {type}
-          </Box>
-          world
-        …
+```diff
+ import "fontsource-roboto/300.css";
+ import "fontsource-roboto/400.css";
+ import "fontsource-roboto/500.css";
+ import "fontsource-roboto/700.css";
+
+-import { CssBaseline, Typography } from "@material-ui/core";
++import { Box, CssBaseline, Typography } from "@material-ui/core";
+ import { grey } from "@material-ui/core/colors";
+ import {
++  createMuiTheme,
+   makeStyles,
++  responsiveFontSizes,
+   ThemeProvider,
+   useTheme,
+-  createMuiTheme,
+-  responsiveFontSizes,
+ } from "@material-ui/core/styles";
+ import React from "react";
+
+ let theme = createMuiTheme({ palette: { type: "dark" } });
+ theme = responsiveFontSizes(theme);
+ const useStyles = makeStyles(({ palette }) => ({
+   root: {
+     backgroundColor: grey[900], // near-black: #212121
+     "& h1": { color: grey[50] }, // near-white: #fafafa
+   },
+ }));
+
+ const App = () => {
+   const { root } = useStyles();
+   const { palette } = useTheme();
+
+   return (
+     <ThemeProvider theme={theme}>
+       <div className={root}>
+         <CssBaseline />
+-        <Typography variant="h1">hello, {palette.type} world</Typography>
++        <Typography variant="h1">
++          hello,{" "}
++          <Box component="span" bgcolor="text.secondary" color="text.primary">
++            {palette.type}
++          </Box>{" "}
++          world
++        </Typography>
+       </div>
+     </ThemeProvider>
+   );
+ };
+
+ export default App;
 ```
+
+</details>
+
+[&#9654; Run code &rarr;](https://codesandbox.io/s/mui-card-lesson-31-24hkm)
 
 > **Notes:**
 >
