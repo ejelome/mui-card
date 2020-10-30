@@ -381,17 +381,47 @@ $ npm i @material-ui/{core,icons} \
 
 #### 2.3. hue[shade]
 
-```javascript
-// file: src/App.js
-// …
-import { grey } from "@material-ui/core/colors";
+<details>
+  <summary>src/App.js</summary>
 
-const useStyles = makeStyles(() => ({
-  root: {
-    backgroundColor: grey[900], // near-black: #212121
-    "& h1": { color: grey[50] }, // near-white: #fafafa
-  // …
+```diff
+ import "fontsource-roboto/300.css";
+ import "fontsource-roboto/400.css";
+ import "fontsource-roboto/500.css";
+ import "fontsource-roboto/700.css";
+
+ import { CssBaseline, Typography } from "@material-ui/core";
++import { grey } from "@material-ui/core/colors";
+ import { makeStyles, useTheme } from "@material-ui/core/styles";
+ import React from "react";
+
+ const useStyles = makeStyles(({ palette }) => ({
+   root: {
+-    backgroundColor: palette.common.black,
+-    "& h1": { color: palette.common.white },
++    backgroundColor: grey[900], // near-black: #212121
++    "& h1": { color: grey[50] }, // near-white: #fafafa
+   },
+ }));
+
+ const App = () => {
+   const { root } = useStyles();
+   const { palette } = useTheme();
+
+   return (
+     <div className={root}>
+       <CssBaseline />
+       <Typography variant="h1">hello, {palette.type} world</Typography>
+     </div>
+   );
+ };
+
+ export default App;
 ```
+
+</details>
+
+[&#9654; Run code &rarr;](https://codesandbox.io/s/mui-card-lesson-23-uyq61)
 
 > **Note:** <br />
 > The `grey` object is one of MUI's [color palette](https://material-ui.com/customization/color/#color-palette)s (`grey[50…900]` means `hue[shade]`).
