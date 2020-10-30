@@ -488,15 +488,56 @@ $ npm i @material-ui/{core,icons} \
 
 #### 2.5. responsiveFontSizes
 
-```javascript
-// file: src/App.js
-// …
-import { …, responsiveFontSizes, … } from "@material-ui/core/styles";
-// …
-let theme = createMuiTheme( … )
-theme = responsiveFontSizes(theme);
-// …
+<details>
+  <summary>src/App.js</summary>
+
+```diff
+ import "fontsource-roboto/300.css";
+ import "fontsource-roboto/400.css";
+ import "fontsource-roboto/500.css";
+ import "fontsource-roboto/700.css";
+
+ import { CssBaseline, Typography } from "@material-ui/core";
+ import { grey } from "@material-ui/core/colors";
+ import {
+   createMuiTheme,
+   makeStyles,
++  responsiveFontSizes,
+   ThemeProvider,
+   useTheme,
+ } from "@material-ui/core/styles";
+ import React from "react";
+
+-const theme = createMuiTheme({ palette: { type: "dark" } });
++let theme = createMuiTheme({ palette: { type: "dark" } });
++theme = responsiveFontSizes(theme);
+ const useStyles = makeStyles(({ palette }) => ({
+   root: {
+     backgroundColor: grey[900], // near-black: #212121
+     "& h1": { color: grey[50] }, // near-white: #fafafa
+   },
+ }));
+
+ const App = () => {
+   const { root } = useStyles();
+   const { palette } = useTheme();
+
+   return (
+     <ThemeProvider theme={theme}>
+       <div className={root}>
+         <CssBaseline />
+         <Typography variant="h1">hello, {palette.type} world</Typography>
+       </div>
+     </ThemeProvider>
+   );
+ };
+
+ export default App;
 ```
+
+</details>
+
+[&#9654; Run code &rarr;](https://codesandbox.io/s/mui-card-lesson-25-zywx5)
 
 > **Note:** <br />
 > The [`responsiveFontSizes`](https://material-ui.com/customization/theming/#responsivefontsizes-theme-options-theme) generates responsive typography for the theme.
