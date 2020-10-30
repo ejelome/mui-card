@@ -1502,10 +1502,14 @@ $ npm i @material-ui/{core,icons} \
 
 #### 7.3 Typography
 
+<details>
+  <summary>&lt;Typography&gt;</summary>
+
 ```javascript
-// Usage:
 <Typography>…</Typography>
 ```
+
+</details>
 
 > **Notes:**
 >
