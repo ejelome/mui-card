@@ -1013,21 +1013,104 @@ $ npm i @material-ui/{core,icons} \
 
 #### 5.1. Links
 
-```javascript
-// file: src/App.js
-// …
-import { …, Link, … } from "@material-ui/core";
-// …
-const App …
-  // …
-  return (
-    // …
-          <Grid item>
-            <Link variant="h1" color="inherit">
-              title
-            </Link>
-          // …
+<details>
+  <summary>src/App.js</summary>
+
+```diff
+ import "fontsource-roboto/300.css";
+ import "fontsource-roboto/400.css";
+ import "fontsource-roboto/500.css";
+ import "fontsource-roboto/700.css";
+
+ import {
+   Box,
+   Container,
+   CssBaseline,
+   Grid,
+   Hidden,
+   IconButton,
++  Link,
+   Paper,
+   Typography,
+ } from "@material-ui/core";
+ import { grey } from "@material-ui/core/colors";
+ import {
+   createMuiTheme,
+   makeStyles,
+   responsiveFontSizes,
+   ThemeProvider,
+   useTheme,
+ } from "@material-ui/core/styles";
+ import { Facebook, MoreHoriz } from "@material-ui/icons";
+ import React from "react";
+
+ let theme = createMuiTheme({ palette: { type: "dark" } });
+ theme = responsiveFontSizes(theme);
+ const useStyles = makeStyles(({ palette }) => ({
+   root: {
+     backgroundColor: grey[900], // near-black: #212121
+     "& h1": { color: grey[50] }, // near-white: #fafafa
+   },
+ }));
+
+ const App = () => {
+   const { root } = useStyles();
+   const { palette } = useTheme();
+
+   return (
+     <ThemeProvider theme={theme}>
+       <Container className={root} disableGutters={true}>
+         <CssBaseline />
+         <Grid
+           component={Paper}
+           elevation={0}
+           container
+           direction="column"
+           alignItems="center"
+           spacing={4}
+         >
+           <Grid item>
+             <Box mt={4}>
+               <img
+                 alt=""
+                 src="https://via.placeholder.com/96x96"
+                 width="96"
+                 height="96"
+               />
+             </Box>
+           </Grid>
+           <Grid item>
+-            <Typography variant="h1">hello, {palette.type} title</Typography>
++            <Link href="#" variant="h1" color="inherit">
++              hello, {palette.type} title
++            </Link>
+           </Grid>
+           <Grid item>
+             <Typography variant="subtitle1">subtitle</Typography>
+           </Grid>
+           <Grid item>
+             <Typography variant="body1">description</Typography>
+           </Grid>
+           <Grid item container justify="space-evenly">
+             <IconButton href="https://facebook.com">
+               <Facebook />
+             </IconButton>
+             <Hidden smUp>
+               <MoreHoriz />
+             </Hidden>
+           </Grid>
+         </Grid>
+       </Container>
+     </ThemeProvider>
+   );
+ };
+
+ export default App;
 ```
+
+</details>
+
+[&#9654; Run code &rarr;](https://codesandbox.io/s/mui-card-lesson-51-81cho)
 
 > **Notes:**
 >
