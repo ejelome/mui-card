@@ -127,62 +127,153 @@ $ npm i @material-ui/{core,icons} \
 
 ##### 1.2.1. CssBaseline
 
-```javascript
-// file: src/App.js
-// …
+<details>
+  <summary>src/App.js</summary>
 
-import { CssBaseline } from "@material-ui/core";
+```diff
+-import React from 'react';
+-import logo from './logo.svg';
+-import './App.css';
++import { CssBaseline } from "@material-ui/core";
++import React from "react";
 
-const App = () => {
-  return (
-    <div …>
-      <CssBaseline />
-    // …
+-function App() {
+-  return (
+-    <div className="App">
+-      <header className="App-header">
+-        <img src={logo} className="App-logo" alt="logo" />
+-        <p>
+-          Edit <code>src/App.js</code> and save to reload.
+-        </p>
+-        <a
+-          className="App-link"
+-          href="https://reactjs.org"
+-          target="_blank"
+-          rel="noopener noreferrer"
+-        >
+-          Learn React
+-        </a>
+-      </header>
+-    </div>
+-  );
+-}
++const App = () => (
++  <>
++    <CssBaseline />
++  </>
++);
+
+ export default App;
 ```
+
+</details>
+
+[&#9654; Run code &rarr;](https://codesandbox.io/s/mui-card-lesson-121-wmigr)
 
 > **Note:** <br />
 > The [`<CssBaseline />`](https://material-ui.com/components/css-baseline) fix inconsistencies across browsers and devices with an opinionated resets.
 
 ##### 1.2.2. Roboto font
 
-```javascript
-// file: src/App.js
-// …
-import "fontsource-roboto/300.css";
-import "fontsource-roboto/400.css";
-import "fontsource-roboto/500.css";
-import "fontsource-roboto/700.css";
+<details>
+  <summary>src/App.js</summary>
 
-import { …, Typography } from "@material-ui/core";
+```diff
+-import { CssBaseline } from "@material-ui/core";
+-import React from "react";
+-
+-const App = () => (
+-  <>
+-    <CssBaseline />
+-  </>
+-);
+-
+-export default App;
++import "fontsource-roboto/300.css";
++import "fontsource-roboto/400.css";
++import "fontsource-roboto/500.css";
++import "fontsource-roboto/700.css";
 
-const App = () => {
-  return (
-    <div …>
-      // …
-      <Typography variant="h1">hello, world</Typography>
-    // …
+-import { CssBaseline } from "@material-ui/core";
++import { CssBaseline, Typography } from "@material-ui/core";
+ import React from "react";
+
+ const App = () => (
+   <>
+     <CssBaseline />
++    <Typography variant="h1">hello, world</Typography>
+   </>
+ );
+
+ export default App;
 ```
+
+</details>
+
+[&#9654; Run code &rarr;](https://codesandbox.io/s/mui-card-lesson-122-k3enh)
 
 > **Note:** <br />
 > Only `300`, `400`, `500` and `700` of typography font weights are being used by Material-UI.
 
 ##### 1.2.3. Viewport
 
-```html
-<!-- file: public/index.html -->
-<!-- … -->
-<html …>
-  <head>
-    <!-- … -->
-    <meta
-      name="viewport"
-      content="minimum-scale=1, initial-scale=1, width=device-width"
-    />
-    <!-- … -->
-  </head>
-  <!-- … -->
-</html>
+<details>
+  <summary>public/index.html</summary>
+
+```diff
+ <!DOCTYPE html>
+ <html lang="en">
+   <head>
+     <meta charset="utf-8" />
+     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+-    <meta name="viewport" content="width=device-width, initial-scale=1" />
++    <meta
++      name="viewport"
++      content="minimum-scale=1, initial-scale=1, width=device-width"
++    />
++
+     <meta name="theme-color" content="#000000" />
+     <meta
+       name="description"
+       content="Web site created using create-react-app"
+     />
+     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+     <!--
+       manifest.json provides metadata used when your web app is installed on a
+       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+     -->
+     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+     <!--
+       Notice the use of %PUBLIC_URL% in the tags above.
+       It will be replaced with the URL of the `public` folder during the build.
+       Only files inside the `public` folder can be referenced from the HTML.
+
+       Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+       work correctly both with client-side routing and a non-root public URL.
+       Learn how to configure a non-root public URL by running `npm run build`.
+     -->
+     <title>React App</title>
+   </head>
+   <body>
+     <noscript>You need to enable JavaScript to run this app.</noscript>
+     <div id="root"></div>
+     <!--
+       This HTML file is a template.
+       If you open it directly in the browser, you will see an empty page.
+
+       You can add webfonts, meta tags, or analytics to this file.
+       The build step will place the bundled scripts into the <body> tag.
+
+       To begin the development, run `npm start` or `yarn start`.
+       To create a production bundle, use `npm run build` or `yarn build`.
+     -->
+   </body>
+ </html>
 ```
+
+</details>
+
+[&#9654; Run code &rarr;](https://codesandbox.io/s/mui-card-lesson-123-p86mq?file=/public/index.html)
 
 > **Note:** <br />
 > The [`<meta name="viewport" />`](https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag#Enter_viewport_meta_tag) ensures proper rendering and touch zooming for all browsers and devices.
@@ -191,24 +282,49 @@ const App = () => {
 
 #### 2.1. makeStyles
 
-```javascript
-// file: src/App.js
-// …
-import { makeStyles } from "@material-ui/core/styles";
+<details>
+  <summary>src/App.js</summary>
 
-const useStyles = makeStyles(({ palette: { common: { black, white } } }) => ({
-  root: {
-    backgroundColor: black,
-    "& h1": { color: white },
-  },
-}));
+```diff
+ import "fontsource-roboto/300.css";
+ import "fontsource-roboto/400.css";
+ import "fontsource-roboto/500.css";
+ import "fontsource-roboto/700.css";
 
-const App = () => {
-  const { root } = useStyles();
-  return (
-    <div className={root}>
-      // …
+ import { CssBaseline, Typography } from "@material-ui/core";
++import { makeStyles } from "@material-ui/core/styles";
+ import React from "react";
+
+-const App = () => (
+-  <>
+-    <CssBaseline />
+-    <Typography variant="h1">hello, world</Typography>
+-  </>
+-);
++const useStyles = makeStyles(({ palette }) => ({
++  root: {
++    backgroundColor: palette.common.black,
++    "& h1": { color: palette.common.white },
++  },
++}));
++
++const App = () => {
++  const { root } = useStyles();
++
++  return (
++    <div className={root}>
++      <CssBaseline />
++      <Typography variant="h1">hello, world</Typography>
++    </div>
++  );
++};
+
+ export default App;
 ```
+
+</details>
+
+[&#9654; Run code &rarr;](https://codesandbox.io/s/mui-card-lesson-21-w06uw)
 
 > **Notes:**
 >
@@ -219,61 +335,151 @@ const App = () => {
 
 #### 2.2. useTheme
 
-```javascript
-// file: src/App.js
-// …
-import { …, useTheme } from "@material-ui/core/styles";
+<details>
+  <summary>src/App.js</summary>
 
-// …
-const App = () => {
-  // …
-  const {
-    palette: { type },
-  } = useTheme();
+```diff
+ import "fontsource-roboto/300.css";
+ import "fontsource-roboto/400.css";
+ import "fontsource-roboto/500.css";
+ import "fontsource-roboto/700.css";
 
-  return (
-    <div …>
-      // …
-      <Typography …>hello, {type} world…
+ import { CssBaseline, Typography } from "@material-ui/core";
+-import { makeStyles } from "@material-ui/core/styles";
++import { makeStyles, useTheme } from "@material-ui/core/styles";
+ import React from "react";
+
+ const useStyles = makeStyles(({ palette }) => ({
+   root: {
+     backgroundColor: palette.common.black,
+     "& h1": { color: palette.common.white },
+   },
+ }));
+
+ const App = () => {
+   const { root } = useStyles();
++  const { palette } = useTheme();
+
+   return (
+     <div className={root}>
+       <CssBaseline />
+-      <Typography variant="h1">hello, world</Typography>
++      <Typography variant="h1">hello, {palette.type} world</Typography>
+     </div>
+   );
+ };
+
+ export default App;
 ```
+
+</details>
+
+[&#9654; Run code &rarr;](https://codesandbox.io/s/mui-card-lesson-22-beg2g)
 
 > **Note:** <br />
 > The [`useTheme`](https://material-ui.com/styles/api/#usetheme-theme) hook returns the `theme` object that has access to theme's properties.
 
 #### 2.3. hue[shade]
 
-```javascript
-// file: src/App.js
-// …
-import { grey } from "@material-ui/core/colors";
+<details>
+  <summary>src/App.js</summary>
 
-const useStyles = makeStyles(() => ({
-  root: {
-    backgroundColor: grey[900], // near-black: #212121
-    "& h1": { color: grey[50] }, // near-white: #fafafa
-  // …
+```diff
+ import "fontsource-roboto/300.css";
+ import "fontsource-roboto/400.css";
+ import "fontsource-roboto/500.css";
+ import "fontsource-roboto/700.css";
+
+ import { CssBaseline, Typography } from "@material-ui/core";
++import { grey } from "@material-ui/core/colors";
+ import { makeStyles, useTheme } from "@material-ui/core/styles";
+ import React from "react";
+
+ const useStyles = makeStyles(({ palette }) => ({
+   root: {
+-    backgroundColor: palette.common.black,
+-    "& h1": { color: palette.common.white },
++    backgroundColor: grey[900], // near-black: #212121
++    "& h1": { color: grey[50] }, // near-white: #fafafa
+   },
+ }));
+
+ const App = () => {
+   const { root } = useStyles();
+   const { palette } = useTheme();
+
+   return (
+     <div className={root}>
+       <CssBaseline />
+       <Typography variant="h1">hello, {palette.type} world</Typography>
+     </div>
+   );
+ };
+
+ export default App;
 ```
+
+</details>
+
+[&#9654; Run code &rarr;](https://codesandbox.io/s/mui-card-lesson-23-uyq61)
 
 > **Note:** <br />
 > The `grey` object is one of MUI's [color palette](https://material-ui.com/customization/color/#color-palette)s (`grey[50…900]` means `hue[shade]`).
 
 #### 2.4. Custom theme
 
-```javascript
-// file: src/App.js
-// …
-import { createMuiTheme, …, ThemeProvider, … } from "@material-ui/core/styles";
-// …
-const theme = createMuiTheme({ palette: { type: "dark" } });
+<details>
+  <summary>src/App.js</summary>
 
-const App = () => {
-  // …
-  return (
-    <ThemeProvider theme={theme}>
-      // …
-    </ThemeProvider>
-  // …
+```diff
+ import "fontsource-roboto/300.css";
+ import "fontsource-roboto/400.css";
+ import "fontsource-roboto/500.css";
+ import "fontsource-roboto/700.css";
+
+ import { CssBaseline, Typography } from "@material-ui/core";
+ import { grey } from "@material-ui/core/colors";
+-import { makeStyles, useTheme } from "@material-ui/core/styles";
++import {
++  createMuiTheme,
++  makeStyles,
++  ThemeProvider,
++  useTheme,
++} from "@material-ui/core/styles";
+ import React from "react";
+
++const theme = createMuiTheme({ palette: { type: "dark" } });
+ const useStyles = makeStyles(({ palette }) => ({
+   root: {
+     backgroundColor: grey[900], // near-black: #212121
+     "& h1": { color: grey[50] }, // near-white: #fafafa
+   },
+ }));
+
+ const App = () => {
+   const { root } = useStyles();
+   const { palette } = useTheme();
+
+   return (
+-    <div className={root}>
+-      <CssBaseline />
+-      <Typography variant="h1">hello, {palette.type} world</Typography>
+-    </div>
++    <ThemeProvider theme={theme}>
++      <div className={root}>
++        <CssBaseline />
++        <Typography variant="h1">hello, {palette.type} world</Typography>
++      </div>
++    </ThemeProvider>
+   );
+ };
+
+ export default App;
 ```
+
+</details>
+
+[&#9654; Run code &rarr;](https://codesandbox.io/s/mui-card-lesson-24-c9i4t)
 
 > **Notes:**
 >
@@ -282,15 +488,56 @@ const App = () => {
 
 #### 2.5. responsiveFontSizes
 
-```javascript
-// file: src/App.js
-// …
-import { …, responsiveFontSizes, … } from "@material-ui/core/styles";
-// …
-let theme = createMuiTheme( … )
-theme = responsiveFontSizes(theme);
-// …
+<details>
+  <summary>src/App.js</summary>
+
+```diff
+ import "fontsource-roboto/300.css";
+ import "fontsource-roboto/400.css";
+ import "fontsource-roboto/500.css";
+ import "fontsource-roboto/700.css";
+
+ import { CssBaseline, Typography } from "@material-ui/core";
+ import { grey } from "@material-ui/core/colors";
+ import {
+   createMuiTheme,
+   makeStyles,
++  responsiveFontSizes,
+   ThemeProvider,
+   useTheme,
+ } from "@material-ui/core/styles";
+ import React from "react";
+
+-const theme = createMuiTheme({ palette: { type: "dark" } });
++let theme = createMuiTheme({ palette: { type: "dark" } });
++theme = responsiveFontSizes(theme);
+ const useStyles = makeStyles(({ palette }) => ({
+   root: {
+     backgroundColor: grey[900], // near-black: #212121
+     "& h1": { color: grey[50] }, // near-white: #fafafa
+   },
+ }));
+
+ const App = () => {
+   const { root } = useStyles();
+   const { palette } = useTheme();
+
+   return (
+     <ThemeProvider theme={theme}>
+       <div className={root}>
+         <CssBaseline />
+         <Typography variant="h1">hello, {palette.type} world</Typography>
+       </div>
+     </ThemeProvider>
+   );
+ };
+
+ export default App;
 ```
+
+</details>
+
+[&#9654; Run code &rarr;](https://codesandbox.io/s/mui-card-lesson-25-zywx5)
 
 > **Note:** <br />
 > The [`responsiveFontSizes`](https://material-ui.com/customization/theming/#responsivefontsizes-theme-options-theme) generates responsive typography for the theme.
@@ -299,25 +546,65 @@ theme = responsiveFontSizes(theme);
 
 #### 3.1. Box
 
-```javascript
-// file: src/App.js
-// …
-import { Box, … } from "@material-ui/core";
+<details>
+  <summary>src/App.js</summary>
 
-const App …
-  // …
-  return (
-    // …
-    <ThemeProvider …>
-      // …
-        <Typography …>
-          hello,
-          <Box component="span" bgcolor="text.secondary" color="text.primary">
-            {type}
-          </Box>
-          world
-        …
+```diff
+ import "fontsource-roboto/300.css";
+ import "fontsource-roboto/400.css";
+ import "fontsource-roboto/500.css";
+ import "fontsource-roboto/700.css";
+
+-import { CssBaseline, Typography } from "@material-ui/core";
++import { Box, CssBaseline, Typography } from "@material-ui/core";
+ import { grey } from "@material-ui/core/colors";
+ import {
++  createMuiTheme,
+   makeStyles,
++  responsiveFontSizes,
+   ThemeProvider,
+   useTheme,
+-  createMuiTheme,
+-  responsiveFontSizes,
+ } from "@material-ui/core/styles";
+ import React from "react";
+
+ let theme = createMuiTheme({ palette: { type: "dark" } });
+ theme = responsiveFontSizes(theme);
+ const useStyles = makeStyles(({ palette }) => ({
+   root: {
+     backgroundColor: grey[900], // near-black: #212121
+     "& h1": { color: grey[50] }, // near-white: #fafafa
+   },
+ }));
+
+ const App = () => {
+   const { root } = useStyles();
+   const { palette } = useTheme();
+
+   return (
+     <ThemeProvider theme={theme}>
+       <div className={root}>
+         <CssBaseline />
+-        <Typography variant="h1">hello, {palette.type} world</Typography>
++        <Typography variant="h1">
++          hello,{" "}
++          <Box component="span" bgcolor="text.secondary" color="text.primary">
++            {palette.type}
++          </Box>{" "}
++          world
++        </Typography>
+       </div>
+     </ThemeProvider>
+   );
+ };
+
+ export default App;
 ```
+
+</details>
+
+[&#9654; Run code &rarr;](https://codesandbox.io/s/mui-card-lesson-31-24hkm)
 
 > **Notes:**
 >
@@ -326,20 +613,64 @@ const App …
 
 #### 3.2. Container
 
-```javascript
-// file: src/App.js
-// …
-import { …, Container, … } from "@material-ui/core";
-// …
-const App = () => {
-  // …
-  return (
-    <ThemeProvider …>
-      <Container className={root} disableGutters={true}>
-        // …
-      </Container>
-    // …
+<details>
+  <summary>src/App.js</summary>
+
+```diff
+ import "fontsource-roboto/300.css";
+ import "fontsource-roboto/400.css";
+ import "fontsource-roboto/500.css";
+ import "fontsource-roboto/700.css";
+
+-import { Box, CssBaseline, Typography } from "@material-ui/core";
++import { Box, Container, CssBaseline, Typography } from "@material-ui/core";
+ import { grey } from "@material-ui/core/colors";
+ import {
+   createMuiTheme,
+   makeStyles,
+   responsiveFontSizes,
+   ThemeProvider,
+   useTheme,
+ } from "@material-ui/core/styles";
+ import React from "react";
+
+ let theme = createMuiTheme({ palette: { type: "dark" } });
+ theme = responsiveFontSizes(theme);
+ const useStyles = makeStyles(({ palette }) => ({
+   root: {
+     backgroundColor: grey[900], // near-black: #212121
+     "& h1": { color: grey[50] }, // near-white: #fafafa
+   },
+ }));
+
+ const App = () => {
+   const { root } = useStyles();
+   const { palette } = useTheme();
+
+   return (
+     <ThemeProvider theme={theme}>
+-      <div className={root}>
++      <Container className={root} disableGutters={true}>
+         <CssBaseline />
+         <Typography variant="h1">
+           hello,{" "}
+           <Box component="span" bgcolor="text.secondary" color="text.primary">
+             {palette.type}
+           </Box>{" "}
+           world
+         </Typography>
+-      </div>
++      </Container>
+     </ThemeProvider>
+   );
+ };
+
+ export default App;
 ```
+
+</details>
+
+[&#9654; Run code &rarr;](https://codesandbox.io/s/mui-card-lesson-32-5ppkq)
 
 > **Notes:**
 >
@@ -349,51 +680,101 @@ const App = () => {
 
 #### 3.3. Grid
 
-```javascript
-// file: src/App.js
-// …
-import { Box, …, Grid, Paper, Typography } from "@material-ui/core";
-import { Mood } from "@material-ui/icons";
-// …
-const App = () => {
-  // …
-  return (
-    // …
-      <Container …>
-        <Grid
-          component={Paper}
-          elevation={0}
-          container
-          direction="column"
-          alignItems="center"
-          spacing={4}
-        >
-          <Grid item>
-            <Box mt={4}>
-              <img
-                alt=""
-                src="https://via.placeholder.com/96x96"
-                width="96"
-                height="96"
-              />
-            </Box>
-          </Grid>
-          <Grid item>
-            <Typography variant="h1">title</Typography>
-          </Grid>
-          <Grid item>
-            <Typography variant="subtitle1">subtitle</Typography>
-          </Grid>
-          <Grid item>
-            <Typography variant="body1">description</Typography>
-          </Grid>
-          <Grid item container justify="space-evenly">
-            <Mood />
-          </Grid>
-        </Grid>
-      </Container>
-    // …
+<details>
+  <summary>src/App.js</summary>
+
+```diff
+ import "fontsource-roboto/300.css";
+ import "fontsource-roboto/400.css";
+ import "fontsource-roboto/500.css";
+ import "fontsource-roboto/700.css";
+
+-import { Box, Container, CssBaseline, Typography } from "@material-ui/core";
++import {
++  Box,
++  Container,
++  CssBaseline,
++  Grid,
++  Paper,
++  Typography,
++} from "@material-ui/core";
+ import { grey } from "@material-ui/core/colors";
+ import {
+   createMuiTheme,
+   makeStyles,
+   responsiveFontSizes,
+   ThemeProvider,
+   useTheme,
+ } from "@material-ui/core/styles";
++import { Mood } from "@material-ui/icons";
+ import React from "react";
+
+ let theme = createMuiTheme({ palette: { type: "dark" } });
+ theme = responsiveFontSizes(theme);
+ const useStyles = makeStyles(({ palette }) => ({
+   root: {
+     backgroundColor: grey[900], // near-black: #212121
+     "& h1": { color: grey[50] }, // near-white: #fafafa
+   },
+ }));
+
+ const App = () => {
+   const { root } = useStyles();
+   const { palette } = useTheme();
+
+   return (
+     <ThemeProvider theme={theme}>
+       <Container className={root} disableGutters={true}>
+         <CssBaseline />
+-        <Typography variant="h1">
+-          hello,{" "}
+-          <Box component="span" bgcolor="text.secondary" color="text.primary">
+-            {palette.type}
+-          </Box>{" "}
+-          world
+-        </Typography>
++        <Grid
++          component={Paper}
++          elevation={0}
++          container
++          direction="column"
++          alignItems="center"
++          spacing={4}
++        >
++          <Grid item>
++            <Box mt={4}>
++              <img
++                alt=""
++                src="https://via.placeholder.com/96x96"
++                width="96"
++                height="96"
++              />
++            </Box>
++          </Grid>
++          <Grid item>
++            <Typography variant="h1">hello, {palette.type} world</Typography>
++          </Grid>
++          <Grid item>
++            <Typography variant="subtitle1">subtitle</Typography>
++          </Grid>
++          <Grid item>
++            <Typography variant="body1">description</Typography>
++          </Grid>
++          <Grid item container justify="space-evenly">
++            <Mood />
++          </Grid>
++        </Grid>
+       </Container>
+     </ThemeProvider>
+   );
+ };
+
+ export default App;
 ```
+
+</details>
+
+[&#9654; Run code &rarr;](https://codesandbox.io/s/mui-card-lesson-33-kmxjz)
 
 > **Notes:**
 >
@@ -412,24 +793,98 @@ const App = () => {
 
 #### 3.4. Hidden
 
-```javascript
-// file: src/App.js
-// …
-import { …, Hidden, … } from "@material-ui/core";
-import { …, MoreHoriz } from "@material-ui/icons";
-// …
-const App = () => {
-  // …
-  return (
-    // …
-        <Grid …>
-          // …
-            <Mood />
-            <Hidden smUp>
-              <MoreHoriz />
-            </Hidden>
-          // …
+<details>
+  <summary>src/App.js</summary>
+
+```diff
+ import "fontsource-roboto/300.css";
+ import "fontsource-roboto/400.css";
+ import "fontsource-roboto/500.css";
+ import "fontsource-roboto/700.css";
+
+ import {
+   Box,
+   Container,
+   CssBaseline,
+   Grid,
++  Hidden,
+   Paper,
+   Typography,
+ } from "@material-ui/core";
+ import { grey } from "@material-ui/core/colors";
+ import {
+   createMuiTheme,
+   makeStyles,
+   responsiveFontSizes,
+   ThemeProvider,
+   useTheme,
+ } from "@material-ui/core/styles";
+-import { Mood } from "@material-ui/icons";
++import { Mood, MoreHoriz } from "@material-ui/icons";
+ import React from "react";
+
+ let theme = createMuiTheme({ palette: { type: "dark" } });
+ theme = responsiveFontSizes(theme);
+ const useStyles = makeStyles(({ palette }) => ({
+   root: {
+     backgroundColor: grey[900], // near-black: #212121
+     "& h1": { color: grey[50] }, // near-white: #fafafa
+   },
+ }));
+
+ const App = () => {
+   const { root } = useStyles();
+   const { palette } = useTheme();
+
+   return (
+     <ThemeProvider theme={theme}>
+       <Container className={root} disableGutters={true}>
+         <CssBaseline />
+         <Grid
+           component={Paper}
+           elevation={0}
+           container
+           direction="column"
+           alignItems="center"
+           spacing={4}
+         >
+           <Grid item>
+             <Box mt={4}>
+               <img
+                 alt=""
+                 src="https://via.placeholder.com/96x96"
+                 width="96"
+                 height="96"
+               />
+             </Box>
+           </Grid>
+           <Grid item>
+             <Typography variant="h1">hello, {palette.type} title</Typography>
+           </Grid>
+           <Grid item>
+             <Typography variant="subtitle1">subtitle</Typography>
+           </Grid>
+           <Grid item>
+             <Typography variant="body1">description</Typography>
+           </Grid>
+           <Grid item container justify="space-evenly">
+             <Mood />
++            <Hidden smUp>
++              <MoreHoriz />
++            </Hidden>
+           </Grid>
+         </Grid>
+       </Container>
+     </ThemeProvider>
+   );
+ };
+
+ export default App;
 ```
+
+</details>
+
+[&#9654; Run code &rarr;](https://codesandbox.io/s/mui-card-lesson-34-5n9mg)
 
 > **Notes:**
 >
@@ -443,22 +898,102 @@ const App = () => {
 
 #### 4.1. Button
 
-```javascript
-// file: src/App.js
-// …
-import { …, IconButton, … } from "@material-ui/core";
-import { Facebook, … } from "@material-ui/icons";
-// …
-const App …
-  // …
-  return (
-    // …
-          <Grid item container justify="space-evenly">
-            <IconButton href="https://facebook.com">
-              <Facebook />
-            </IconButton>
-            // …
+<details>
+  <summary>src/App.js</summary>
+
+```diff
+ import "fontsource-roboto/300.css";
+ import "fontsource-roboto/400.css";
+ import "fontsource-roboto/500.css";
+ import "fontsource-roboto/700.css";
+
+ import {
+   Box,
+   Container,
+   CssBaseline,
+   Grid,
+   Hidden,
++  IconButton,
+   Paper,
+   Typography,
+ } from "@material-ui/core";
+ import { grey } from "@material-ui/core/colors";
+ import {
+   createMuiTheme,
+   makeStyles,
+   responsiveFontSizes,
+   ThemeProvider,
+   useTheme,
+ } from "@material-ui/core/styles";
+-import { Mood, MoreHoriz } from "@material-ui/icons";
++import { Facebook, MoreHoriz } from "@material-ui/icons";
+ import React from "react";
+
+ let theme = createMuiTheme({ palette: { type: "dark" } });
+ theme = responsiveFontSizes(theme);
+ const useStyles = makeStyles(({ palette }) => ({
+   root: {
+     backgroundColor: grey[900], // near-black: #212121
+     "& h1": { color: grey[50] }, // near-white: #fafafa
+   },
+ }));
+
+ const App = () => {
+   const { root } = useStyles();
+   const { palette } = useTheme();
+
+   return (
+     <ThemeProvider theme={theme}>
+       <Container className={root} disableGutters={true}>
+         <CssBaseline />
+         <Grid
+           component={Paper}
+           elevation={0}
+           container
+           direction="column"
+           alignItems="center"
+           spacing={4}
+         >
+           <Grid item>
+             <Box mt={4}>
+               <img
+                 alt=""
+                 src="https://via.placeholder.com/96x96"
+                 width="96"
+                 height="96"
+               />
+             </Box>
+           </Grid>
+           <Grid item>
+             <Typography variant="h1">hello, {palette.type} title</Typography>
+           </Grid>
+           <Grid item>
+             <Typography variant="subtitle1">subtitle</Typography>
+           </Grid>
+           <Grid item>
+             <Typography variant="body1">description</Typography>
+           </Grid>
+           <Grid item container justify="space-evenly">
+-            <Mood />
++            <IconButton href="https://facebook.com">
++              <Facebook />
++            </IconButton>
+             <Hidden smUp>
+               <MoreHoriz />
+             </Hidden>
+           </Grid>
+         </Grid>
+       </Container>
+     </ThemeProvider>
+   );
+ };
+
+ export default App;
 ```
+
+</details>
+
+[&#9654; Run code &rarr;](https://codesandbox.io/s/mui-card-lesson-41-yw8rb)
 
 > **Notes:**
 >
@@ -478,21 +1013,104 @@ const App …
 
 #### 5.1. Links
 
-```javascript
-// file: src/App.js
-// …
-import { …, Link, … } from "@material-ui/core";
-// …
-const App …
-  // …
-  return (
-    // …
-          <Grid item>
-            <Link variant="h1" color="inherit">
-              title
-            </Link>
-          // …
+<details>
+  <summary>src/App.js</summary>
+
+```diff
+ import "fontsource-roboto/300.css";
+ import "fontsource-roboto/400.css";
+ import "fontsource-roboto/500.css";
+ import "fontsource-roboto/700.css";
+
+ import {
+   Box,
+   Container,
+   CssBaseline,
+   Grid,
+   Hidden,
+   IconButton,
++  Link,
+   Paper,
+   Typography,
+ } from "@material-ui/core";
+ import { grey } from "@material-ui/core/colors";
+ import {
+   createMuiTheme,
+   makeStyles,
+   responsiveFontSizes,
+   ThemeProvider,
+   useTheme,
+ } from "@material-ui/core/styles";
+ import { Facebook, MoreHoriz } from "@material-ui/icons";
+ import React from "react";
+
+ let theme = createMuiTheme({ palette: { type: "dark" } });
+ theme = responsiveFontSizes(theme);
+ const useStyles = makeStyles(({ palette }) => ({
+   root: {
+     backgroundColor: grey[900], // near-black: #212121
+     "& h1": { color: grey[50] }, // near-white: #fafafa
+   },
+ }));
+
+ const App = () => {
+   const { root } = useStyles();
+   const { palette } = useTheme();
+
+   return (
+     <ThemeProvider theme={theme}>
+       <Container className={root} disableGutters={true}>
+         <CssBaseline />
+         <Grid
+           component={Paper}
+           elevation={0}
+           container
+           direction="column"
+           alignItems="center"
+           spacing={4}
+         >
+           <Grid item>
+             <Box mt={4}>
+               <img
+                 alt=""
+                 src="https://via.placeholder.com/96x96"
+                 width="96"
+                 height="96"
+               />
+             </Box>
+           </Grid>
+           <Grid item>
+-            <Typography variant="h1">hello, {palette.type} title</Typography>
++            <Link href="#" variant="h1" color="inherit">
++              hello, {palette.type} title
++            </Link>
+           </Grid>
+           <Grid item>
+             <Typography variant="subtitle1">subtitle</Typography>
+           </Grid>
+           <Grid item>
+             <Typography variant="body1">description</Typography>
+           </Grid>
+           <Grid item container justify="space-evenly">
+             <IconButton href="https://facebook.com">
+               <Facebook />
+             </IconButton>
+             <Hidden smUp>
+               <MoreHoriz />
+             </Hidden>
+           </Grid>
+         </Grid>
+       </Container>
+     </ThemeProvider>
+   );
+ };
+
+ export default App;
 ```
+
+</details>
+
+[&#9654; Run code &rarr;](https://codesandbox.io/s/mui-card-lesson-51-81cho)
 
 > **Notes:**
 >
@@ -506,65 +1124,130 @@ const App …
 
 #### 6.1. Card
 
-```javascript
-// file: src/App.js
-// …
-import {
-  …,
-  Card,
-  CardActions,
-  CardContent,
-  CardHeader,
-  …
-} from "@material-ui/core";
+<details>
+  <summary>src/App.js</summary>
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    // …
-    textAlign: "center",
-    // …
-    "& .MuiCardHeader-root": { display: "inline" },
-    "& .MuiCardHeader-avatar": { marginTop: theme.spacing(4) },
-    "& .MuiCardActions-root": { display: "flex", justifyContent: "center" },
-  },
-}));
+```diff
+ import "fontsource-roboto/300.css";
+ import "fontsource-roboto/400.css";
+ import "fontsource-roboto/500.css";
+ import "fontsource-roboto/700.css";
 
-// …
-const App …
-  // …
-  return (
-    // …
-      <Container …>
-        <Card component={Paper}>
-          <CardHeader
-            avatar={
-              <img
-                alt=""
-                src="https://via.placeholder.com/96x96"
-                width="96"
-                height="96"
-              />
-            }
-          />
-          <CardContent>
-            <Link variant="h1" color="inherit">
-              title
-            </Link>
-            <Typography variant="subtitle1">subtitle</Typography>
-            <Typography variant="body1">description</Typography>
-          </CardContent>
-        </Card>
-        <CardActions>
-          <IconButton href="https://facebook.com">
-            <Facebook />
-          </IconButton>
-          <Hidden smUp>
-            <MoreHoriz />
-          </Hidden>
-        </CardActions>
-      </Container>
-    // …
+ import {
+-  Box,
++  Card,
++  CardActions,
++  CardContent,
++  CardHeader,
+   Container,
+   CssBaseline,
+-  Grid,
+   Hidden,
+   IconButton,
+   Link,
+   Paper,
+   Typography,
+ } from "@material-ui/core";
+ import { grey } from "@material-ui/core/colors";
+ import {
+   createMuiTheme,
+   makeStyles,
+   responsiveFontSizes,
+   ThemeProvider,
+   useTheme,
+ } from "@material-ui/core/styles";
+ import { Facebook, MoreHoriz } from "@material-ui/icons";
+ import React from "react";
+
+ let theme = createMuiTheme({ palette: { type: "dark" } });
+ theme = responsiveFontSizes(theme);
+ const useStyles = makeStyles(({ palette }) => ({
+   root: {
+-    backgroundColor: grey[900], // near-black: #212121
+-    "& h1": { color: grey[50] }, // near-white: #fafafa
++    backgroundColor: grey[900],
++    textAlign: "center", // near-black: #212121
++    "& h1": { color: grey[50] }, // near-white: #fafafa,
++    "& .MuiCardHeader-root": { display: "inline" },
++    "& .MuiCardHeader-avatar": { marginTop: theme.spacing(4) },
++    "& .MuiCardActions-root": { display: "flex", justifyContent: "center" },
+   },
+ }));
+
+ const App = () => {
+   const { root } = useStyles();
+   const { palette } = useTheme();
+
+   return (
+     <ThemeProvider theme={theme}>
+       <Container className={root} disableGutters={true}>
+         <CssBaseline />
+-        <Grid
+-          component={Paper}
+-          elevation={0}
+-          container
+-          direction="column"
+-          alignItems="center"
+-          spacing={4}
+-        >
+-          <Grid item>
+-            <Box mt={4}>
++        <Card component={Paper}>
++          <CardHeader
++            avatar={
+               <img
+                 alt=""
+                 src="https://via.placeholder.com/96x96"
+                 width="96"
+                 height="96"
+               />
+-            </Box>
+-          </Grid>
+-          <Grid item>
+-            <Link href="#" variant="h1" color="inherit">
++            }
++          />
++          <CardContent>
++            <Link variant="h1" color="inherit">
+               hello, {palette.type} title
+             </Link>
+-          </Grid>
+-          <Grid item>
+             <Typography variant="subtitle1">subtitle</Typography>
+-          </Grid>
+-          <Grid item>
+             <Typography variant="body1">description</Typography>
+-          </Grid>
+-          <Grid item container justify="space-evenly">
+-            <IconButton href="https://facebook.com">
+-              <Facebook />
+-            </IconButton>
+-            <Hidden smUp>
+-              <MoreHoriz />
+-            </Hidden>
+-          </Grid>
+-        </Grid>
++          </CardContent>
++        </Card>
++        <CardActions>
++          <IconButton href="https://facebook.com">
++            <Facebook />
++          </IconButton>
++          <Hidden smUp>
++            <MoreHoriz />
++          </Hidden>
++        </CardActions>
+       </Container>
+     </ThemeProvider>
+   );
+ };
+
+ export default App;
 ```
+
+</details>
+
+[&#9654; Run code &rarr;](https://codesandbox.io/s/mui-card-lesson-61-vxi1e)
 
 > **Notes:**
 >
@@ -578,11 +1261,15 @@ const App …
 
 #### 6.2. Paper
 
+<details>
+  <summary>&lt;Paper&gt;</summary>
+
 ```javascript
-// Usage:
 <Paper>…</Paper>                      // wraps child components
 <Wrapper component={Paper}></Wrapper> // use <Paper> as wrapper
 ```
+
+</details>
 
 > **Notes:**
 >
@@ -595,31 +1282,105 @@ const App …
 
 #### 7.1. Avatar
 
-```javascript
-// file: src/App.js
-// …
-import { Avatar, … } from "@material-ui/core";
-// …
-const useStyles …
-  root: {
-    // …
-    "& .MuiAvatar-root": {
-      margin: "0 auto",
-      width: theme.spacing(12),
-      height: theme.spacing(12),
-    },
-  },
-}));
-// …
-const App …
-  // …
-  return (
-    // …
-          <CardHeader
-            avatar={<Avatar alt="" src="https://via.placeholder.com/96x96" />}
-          />
-          // …
+<details>
+  <summary>src/App.js</summary>
+
+```diff
+ import "fontsource-roboto/300.css";
+ import "fontsource-roboto/400.css";
+ import "fontsource-roboto/500.css";
+ import "fontsource-roboto/700.css";
+
+ import {
++  Avatar,
+   Card,
+   CardActions,
+   CardContent,
+   CardHeader,
+   Container,
+   CssBaseline,
+   Hidden,
+   IconButton,
+   Link,
+   Paper,
+   Typography,
+ } from "@material-ui/core";
+ import { grey } from "@material-ui/core/colors";
+ import {
+   createMuiTheme,
+   makeStyles,
+   responsiveFontSizes,
+   ThemeProvider,
+   useTheme,
+ } from "@material-ui/core/styles";
+ import { Facebook, MoreHoriz } from "@material-ui/icons";
+ import React from "react";
+
+ let theme = createMuiTheme({ palette: { type: "dark" } });
+ theme = responsiveFontSizes(theme);
+ const useStyles = makeStyles(({ palette }) => ({
+   root: {
+     backgroundColor: grey[900],
+     textAlign: "center", // near-black: #212121
+     "& h1": { color: grey[50] }, // near-white: #fafafa,
+     "& .MuiCardHeader-root": { display: "inline" },
+     "& .MuiCardHeader-avatar": { marginTop: theme.spacing(4) },
+     "& .MuiCardActions-root": { display: "flex", justifyContent: "center" },
++    "& .MuiAvatar-root": {
++      margin: "0 auto",
++      width: theme.spacing(12),
++      height: theme.spacing(12),
++    },
+   },
+ }));
+
+ const App = () => {
+   const { root } = useStyles();
+   const { palette } = useTheme();
+
+   return (
+     <ThemeProvider theme={theme}>
+       <Container className={root} disableGutters={true}>
+         <CssBaseline />
+         <Card component={Paper}>
+           <CardHeader
+-            avatar={
+-              <img
+-                alt=""
+-                src="https://via.placeholder.com/96x96"
+-                width="96"
+-                height="96"
+-              />
+-            }
++            avatar={<Avatar alt="" src="https://via.placeholder.com/96x96" />}
+           />
+           <CardContent>
+             <Link variant="h1" color="inherit">
+               hello, {palette.type} title
+             </Link>
+             <Typography variant="subtitle1">subtitle</Typography>
+             <Typography variant="body1">description</Typography>
+           </CardContent>
+         </Card>
+         <CardActions>
+           <IconButton href="https://facebook.com">
+             <Facebook />
+           </IconButton>
+           <Hidden smUp>
+             <MoreHoriz />
+           </Hidden>
+         </CardActions>
+       </Container>
+     </ThemeProvider>
+   );
+ };
+
+ export default App;
 ```
+
+</details>
+
+[&#9654; Run code &rarr;](https://codesandbox.io/s/mui-card-lesson-71-3u7m9)
 
 > **Notes:**
 >
@@ -634,19 +1395,99 @@ const App …
 
 #### 7.2. Divider
 
-```javascript
-// file: src/App.js
-// …
-import { …, Divider, … } from "@material-ui/core";
-// …
-const App …
-  // …
-  return (
-    // …
-            <Typography …>…</Typography>
-            <Divider variant="middle" />
-            // …
+<details>
+  <summary>src/App.js</summary>
+
+```diff
+ import "fontsource-roboto/300.css";
+ import "fontsource-roboto/400.css";
+ import "fontsource-roboto/500.css";
+ import "fontsource-roboto/700.css";
+
+ import {
+   Avatar,
+   Card,
+   CardActions,
+   CardContent,
+   CardHeader,
+   Container,
+   CssBaseline,
++  Divider,
+   Hidden,
+   IconButton,
+   Link,
+   Paper,
+   Typography,
+ } from "@material-ui/core";
+ import { grey } from "@material-ui/core/colors";
+ import {
+   createMuiTheme,
+   makeStyles,
+   responsiveFontSizes,
+   ThemeProvider,
+   useTheme,
+ } from "@material-ui/core/styles";
+ import { Facebook, MoreHoriz } from "@material-ui/icons";
+ import React from "react";
+
+ let theme = createMuiTheme({ palette: { type: "dark" } });
+ theme = responsiveFontSizes(theme);
+ const useStyles = makeStyles(({ palette }) => ({
+   root: {
+     backgroundColor: grey[900],
+     textAlign: "center", // near-black: #212121
+     "& h1": { color: grey[50] }, // near-white: #fafafa,
+     "& .MuiCardHeader-root": { display: "inline" },
+     "& .MuiCardHeader-avatar": { marginTop: theme.spacing(4) },
+     "& .MuiCardActions-root": { display: "flex", justifyContent: "center" },
+     "& .MuiAvatar-root": {
+       margin: "0 auto",
+       width: theme.spacing(12),
+       height: theme.spacing(12),
+     },
+   },
+ }));
+
+ const App = () => {
+   const { root } = useStyles();
+   const { palette } = useTheme();
+
+   return (
+     <ThemeProvider theme={theme}>
+       <Container className={root} disableGutters={true}>
+         <CssBaseline />
+         <Card component={Paper}>
+           <CardHeader
+             avatar={<Avatar alt="" src="https://via.placeholder.com/96x96" />}
+           />
+           <CardContent>
+             <Link variant="h1" color="inherit">
+               hello, {palette.type} title
+             </Link>
+             <Typography variant="subtitle1">subtitle</Typography>
++            <Divider variant="middle" />
+             <Typography variant="body1">description</Typography>
+           </CardContent>
+         </Card>
+         <CardActions>
+           <IconButton href="https://facebook.com">
+             <Facebook />
+           </IconButton>
+           <Hidden smUp>
+             <MoreHoriz />
+           </Hidden>
+         </CardActions>
+       </Container>
+     </ThemeProvider>
+   );
+ };
+
+ export default App;
 ```
+
+</details>
+
+[&#9654; Run code &rarr;](https://codesandbox.io/s/mui-card-lesson-72-4ismw)
 
 > **Notes:**
 >
@@ -661,10 +1502,14 @@ const App …
 
 #### 7.3 Typography
 
+<details>
+  <summary>&lt;Typography&gt;</summary>
+
 ```javascript
-// Usage:
 <Typography>…</Typography>
 ```
+
+</details>
 
 > **Notes:**
 >
@@ -679,11 +1524,15 @@ const App …
 
 #### 8.1. CssBaseline
 
+<details>
+  <summary>&lt;CssBaseline&gt;</summary>
+
 ```javascript
-// Usage:
 <CssBaseline />                          // global reset
 <ScopedCssBaseline>…</ScopedCssBaseline> // scoped reset
 ```
+
+</details>
 
 > **Notes:**
 >
